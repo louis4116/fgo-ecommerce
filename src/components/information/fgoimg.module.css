@@ -1,0 +1,65 @@
+.fgoImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+.fgoImg-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: auto;
+   margin: 0;
+   object-fit: cover;
+   object-position: center;
+}
+
+.fgoImg-swiper-slide{  
+    width: 100%;
+    height: auto;
+    object-position: center;
+}
+.fgoImg-container-second{
+    width: 200px;
+    z-index: 0;
+}
+.fgoImg-swiper-slide-thumbs{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+ 
+ 
+  @media screen and (max-width:1300px ){
+    .fgoImg-container{
+       width: 40vw;
+        
+    } 
+    .fgoImg-swiper-slide{   
+        max-width: 100%;
+        
+    } 
+  }
+  
+  @media screen and (max-width:900px){
+    .fgoImg-container{
+        width: 60vw;
+         
+     } 
+     .fgoImg-swiper-slide{   
+         max-width: 100%;
+         
+     } 
+  }
+
+  @media screen and (max-width:500px){
+    .fgoImg-container{
+        width: 80vw;
+         
+     } 
+    .fgoImg-container-second{
+        display: none;
+    }
+  }

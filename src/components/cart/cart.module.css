@@ -1,0 +1,28 @@
+.cart{
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 30rem;
+    overflow: auto;
+}
+
+.cart-second{
+    text-align: right;
+    margin-top: 10px;
+ }
+ 
+ .cart-second button{
+    
+     cursor: pointer;
+     border: 2px solid black;
+     border-radius: 20px;
+     padding:10px 30px;
+     margin-left: 1rem;
+     background-color: transparent;
+     font-size: bold;
+    }
+
+ .cart-second button:hover{
+    background-color: gray;
+}

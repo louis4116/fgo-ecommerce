@@ -1,0 +1,60 @@
+.header-button{
+    cursor: pointer;
+    color: black;
+    border: none;
+    display: flex;
+    font: inherit;
+    position: relative;
+}
+
+
+.header-button-icon{
+   width: 2.35em;  
+}
+
+ .header-button-number{
+    top: -8px;
+    left: 27px;
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 14px;
+    padding: 2px 6px;
+    text-align: center;
+    
+}
+.header-button-number-bump{
+    top: -8px;
+    left: 27px;
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 14px;
+    padding: 2px 6px;
+    text-align: center;
+    animation: bump 300ms ease-out;
+}
+@keyframes bump {
+    0% {
+      transform: scale(1);
+    }
+    10% {
+      transform: scale(0.9);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+/*
+.header-button-number:hover,
+.header-button-number:active{
+    background-color:rgba(8, 57, 75, 0.5);
+} */

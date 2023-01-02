@@ -1,0 +1,60 @@
+.fgo-InF{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-top:5em;
+   margin-right: auto;
+   margin-left: auto;
+   height: 100%;
+}
+/* .fgo-InF-first{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+   
+} */
+
+.fgo-InF-container{
+    
+    margin-left: 1em;
+    width: 900px;
+    height: 100%;
+}
+
+
+.fgo-InF-content-des{
+    font-size: 14px;
+    
+    color:gray;
+}
+
+@media screen and (max-width:1460px) {
+    .fgo-InF-container{
+        width: 50vw;
+    }
+}
+@media screen and  (max-width:1200px){
+    .fgo-InF-content{
+        max-height: 40vh;
+    }     
+       
+}
+@media screen and (max-width:900px) {
+    .fgo-InF{
+        flex-direction: column;
+        overflow: scroll;
+        margin-bottom: 1em;
+    }
+    .fgo-InF-content-des{
+        max-height: 40vh;
+        overflow: scroll;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .fgo-InF-container{
+        width: 70vw;
+    }
+}

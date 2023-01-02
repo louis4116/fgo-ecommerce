@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Product from "./pages/Product";
+import Header from "./components/header/Header";
+import Cart from "./components/cart/Cart";
+import Checkout from "./pages/Checkout";
+import ProductDetail from "./pages/ProductDetail";
+import { useSelector } from "react-redux";
+
+import "./app.css";
 
 function App() {
+  const [show, setShow] = useState(false);
+  const cartItems = useSelector((state) => state.cart.itemS);
+
+  const showHandler = () => {
+    setShow(true);
+  };
+  const hideHandler = () => {
+    setShow(false);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onShow={showHandler} />
+      {show && <Cart onHide={hideHandler} />}
+
+      <Routes>
+        <Route path="/" element={<Product />} />
+        <Route path="/:id" element={<ProductDetail />} />
+        <Route
+          path="/checkout"
+          element={cartItems.length === 0 ? <Navigate to="/" /> : <Checkout />}
+        />
+      </Routes>
     </div>
   );
 }
