@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import MainItem from "./MainItem/MainItem";
 import ItemImg from "./ItemImg";
 import classes from "./ItemList.module.css";
-import { v4 as uuidv4 } from "uuid";
+
 const ItemList = () => {
   const [firebaseData, setFirebaseData] = useState([]);
   const [anotherFirebaseData, setAnotherFirebaseData] = useState([]);
@@ -16,7 +16,7 @@ const ItemList = () => {
     const fgo = [];
     for (const key in getFgoData) {
       fgo.push({
-        id: uuidv4(),
+        id: key,
         title: getFgoData[key].title,
         price: getFgoData[key].price,
         img: getFgoData[key].img,
