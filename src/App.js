@@ -31,7 +31,7 @@ function App() {
           path="/checkout"
           element={cartItems.length === 0 ? <Navigate to="/" /> : <Checkout />}
         />
-        <Route path="/*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );
