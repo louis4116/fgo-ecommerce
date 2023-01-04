@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 專案介紹 
 
-In the project directory, you can run:
+1.本次專案使用的技術主要是redux toolkit，來進行商品的增減邏輯，用useEffect來進行串接，串接的API是firebase的realtime，從API取得商品資料以及把下單的商品送入firebase。 
 
-### `npm start`
+2.商品的詳細頁面使用了Swiper來進行商品的圖片處理，由於每張圖片的大小不同，並且想讓商品的圖片呈現清楚，所以沒有進行過多的處理。 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.在結帳頁面的表單使用了react-hook-form來進行處理，解決了可能會需要使用過多state的問題，而且在呈現錯誤狀態時也很方便，不用額外的處理，除此之外也使用SweetAlert來提醒使用者缺少了甚麼。 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4.本次專案也有使用localstorage來進行資料基本的存取，下單之後會移除瀏覽器的cache。 
 
-### `npm test`
+# 專案歷程 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+1.本次專案是從課程裡的作業來進行延伸的製作，原本的課程只有商品的頁面，沒有商品的圖片，結帳畫面也只是從購物車向下展開，沒有跳轉到新的畫面，所以一開始預計是要使用三個頁面，除了商品以及結帳頁面之外，還要多加一個首頁，原本首頁是想要簡單的對遊戲的進行介紹，後來又覺得這個頁面的存在並不是一定需要，所以就把首頁刪除，只保留商品和結帳畫面。 
 ![image](https://github.com/louis4116/fgo-ecommerce/blob/master/fgohomepage.gif)
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.在撰寫RWD的時候，原本商品的詳細頁面不是跳轉到另外一個網址，而是像購物車的畫面一樣使用Modal，但是後來在圖片大小的縮放遇到困難，畢竟圖片的規格並不統一，所以後來也放棄Modal的呈現方式，改成跳轉到一個新的畫面來進行處理。 
+![image](https://github.com/louis4116/fgo-ecommerce/blob/master/fgomodal.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.在進行總金額的計算時，原本是想要在商品增減的邏輯來進行，後來發現直接用reduce()比較快，就不在cart-slice進行了。 
 
-### `npm run eject`
+4.在商品的詳細頁面中，原本是想要增加底線來讓頁面的呈現比較舒服，但是後來發現之前去除掉的component裡面有可以呈現同樣效果，還能簡單介紹遊戲，所以就拿來用了。 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5.在itemList和ProductDetail裡進行API串接以及把商品資料傳給子組件原本是想用  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   `` <MainItem  key={item.id} item={...item} />`` 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+的方式來進行，後來在stackoverflow查到react的官方文檔並不建議這樣做，因為這樣會影響到閱讀性，所以這部分並沒有進行更動。 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6.在檔案的管理上，主要是把各個區塊拆開來，比如說header的主要內容就會放在header，cart的內容就放在cart的資料夾裡面。 
 
-## Learn More
+# 專案的感想 
+在本次專案中，算是對從以前到現在的學習進行總複習，在這之中有幾個感受比較深刻的事， 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1.寫程式要進步真的就是要持續的寫，並且要一直查詢資料才能進步，因為你的錯誤別人也有可能發生，而別人的回答也都會包含某些觀念。 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2.專案最好一開始還是要有一定的規劃再開始會比較好，會這樣想的原因，主要還是在這個專案中，首頁的增加以及刪除讓我有種做白工的感覺，原本的首頁是想要簡單介紹一下遊戲，但製作出來呈現的效果會有一種不上不下的感覺，如果一開始就有進行畫面的模擬，應該就不會發生這樣的狀況。 
 
-### Code Splitting
+3.照片的規格統一，照片的規格不統一這件事在進行圖片的縮放遇到很大的困難，尤其是要在modal的狀況下來進行圖片的縮放，實在是太困難了，所以直接改成跳轉到新的頁面來進行呈現。 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4.component的獨立性意外的幫到我，在專案中除了結帳頁面以外，底下都會有遊戲的簡單介紹，而這個component原本是要放在首頁的，之後改放在商品頁面呈現的效果也不錯，而且也不用改寫太多就能使用。 
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5.適時的使用其他人寫好的套件對於專案所想要呈現的效果會有很大的幫助，就這個專案來講，最明顯的是表單和錯誤的提示，如果要自己寫出來，那花的時間一定會多很多，而且也不一定比較好。
