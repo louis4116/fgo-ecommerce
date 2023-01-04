@@ -30,7 +30,7 @@ const cartSlice = createSlice({
           id: newItem.id,
           price: newItem.price,
           number: newItem.number,
-          allPrice: newItem.price,
+          allPrice: newItem.price,//同種商品的總金額
           name: newItem.title,
           img: newItem.img,
         });

@@ -8,7 +8,7 @@ const MainItem = (props) => {
 
   const navigateHandler = (e) => {
     e.stopPropagation();
-    navigate(`/${props.id}`);
+    navigate(`/products/${props.id}`);
   };
 
   return (
