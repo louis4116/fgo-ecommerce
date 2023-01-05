@@ -1,6 +1,6 @@
 # fgo e-commerce
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+專案網址
+https://fgo-shoppingcart.firebaseapp.com/
 
 # 專案介紹 
 
