@@ -62,9 +62,9 @@ const ItemList = () => {
       setFirebaseData(result);
     }
     if (index === "1") {
-      setChange1(false);
+      setChange1(true);
       setChange2(false);
-      setChange3(true);
+      setChange3(false);
     } else if (index === "2") {
       setChange1(false);
       setChange2(true);
