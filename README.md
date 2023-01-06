@@ -33,6 +33,7 @@ https://fgo-shoppingcart.firebaseapp.com/
 6.在檔案的管理上，主要是把各個區塊拆開來，比如說header的主要內容就會放在header，cart的內容就放在cart的資料夾裡面。 
 
 附註1
+![image](https://github.com/louis4116/picuture/blob/main/picture.png)
 
 
 # 專案的感想 
