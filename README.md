@@ -1,6 +1,6 @@
 # fgo e-commerce
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+專案網址
+https://fgo-shoppingcart.firebaseapp.com/
 
 # 專案介紹 
 
@@ -14,13 +14,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # 專案歷程 
 
-1.本次專案是從課程裡的作業來進行延伸的製作，原本的課程只有商品的頁面，沒有商品的圖片，結帳畫面也只是從購物車向下展開，沒有跳轉到新的畫面，所以一開始預計是要使用三個頁面，除了商品以及結帳頁面之外，還要多加一個首頁，原本首頁是想要簡單的對遊戲的進行介紹，後來又覺得這個頁面的存在並不是一定需要，所以就把首頁刪除，只保留商品和結帳畫面。 
+1.本次專案是從課程裡的作業(附註1)來進行延伸的製作，原本的課程只有商品的頁面，沒有商品的圖片，結帳畫面也只是從購物車向下展開，沒有跳轉到新的畫面，所以一開始預計是要使用三個頁面，除了商品以及結帳頁面之外，還要多加一個首頁，原本首頁是想要簡單的對遊戲的進行介紹，後來又覺得這個頁面的存在並不是一定需要，所以就把首頁刪除，只保留商品和結帳畫面。 
 ![image](https://github.com/louis4116/fgo-ecommerce/blob/master/fgohomepage.gif)
 
 2.在撰寫RWD的時候，原本商品的詳細頁面不是跳轉到另外一個網址，而是像購物車的畫面一樣使用Modal，但是後來在圖片大小的縮放遇到困難，畢竟圖片的規格並不統一，所以後來也放棄Modal的呈現方式，改成跳轉到一個新的畫面來進行處理。 
 ![image](https://github.com/louis4116/fgo-ecommerce/blob/master/fgomodal.gif)
 
-3.在進行總金額的計算時，原本是想要在商品增減的邏輯來進行，後來發現直接用reduce()比較快，就不在cart-slice進行了。 
+3.在進行總金額的計算時，原本是想要在cart-slice來進行，後來發現直接用reduce()比較快，就不在cart-slice進行了。 
 
 4.在商品的詳細頁面中，原本是想要增加底線來讓頁面的呈現比較舒服，但是後來發現之前去除掉的component裡面有可以呈現同樣效果，還能簡單介紹遊戲，所以就拿來用了。 
 
@@ -31,6 +31,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 的方式來進行，後來在stackoverflow查到react的官方文檔並不建議這樣做，因為這樣會影響到閱讀性，所以這部分並沒有進行更動。 
 
 6.在檔案的管理上，主要是把各個區塊拆開來，比如說header的主要內容就會放在header，cart的內容就放在cart的資料夾裡面。 
+
+附註1
+![image](https://github.com/louis4116/picuture/blob/main/picture.png)
+
 
 # 專案的感想 
 在本次專案中，算是對從以前到現在的學習進行總複習，在這之中有幾個感受比較深刻的事， 
