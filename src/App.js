@@ -29,7 +29,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route
           path="/checkout"
-          element={cartItems.length === 0 ? <Navigate to="/" /> : <Checkout />}
+          element={ <Checkout />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

@@ -65,7 +65,7 @@ const Form = () => {
       .then(() =>
         Swal.fire({
           title: "成功!!",
-          text: "感謝您的消費，稍後將會跳轉至首頁。。。",
+          text: "感謝您的消費，關閉提示窗將會跳轉至首頁。。。",
           icon: "success",
           confirmButtonText: "關閉",
         })
