@@ -2,9 +2,11 @@
 專案網址
 https://fgo-shoppingcart.firebaseapp.com/
 
+## 流程架構圖
+![image](https://github.com/louis4116/picuture/blob/main/%E6%9E%B6%E6%A7%8B%E5%9C%96.png)
 # 專案介紹 
 
-1.本次專案使用的技術主要是redux toolkit，來進行商品的增減邏輯，用useEffect來進行API的串接，串接的API是firebase的Realtime Database，從firebase取得商品資料以及把下單的商品送入firebase。 
+1.本次專案使用的技術主要是用redux toolkit進行商品的增減，使用hook來進行component內的變數管理和API的串接，串接的API是firebase的Realtime Database，從firebase取得商品資料以及把下單的商品送入firebase。 
 
 2.商品的詳細頁面使用了Swiper來進行商品的圖片處理，由於每張圖片的大小不同，並且想讓商品的圖片呈現清楚，所以沒有進行過多的處理。 
 
