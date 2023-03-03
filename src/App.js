@@ -5,28 +5,28 @@ import Header from "./components/header/Header";
 import Cart from "./components/cart/Cart";
 import Checkout from "./pages/Checkout";
 import ProductDetail from "./pages/ProductDetail";
-
+import useShow from "./custom-hook/useShow";
  
 import "./app.css";
 
 
 function App() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useShow(false);
+console.log(show,setShow)
 
-
-  const showHandler = () => {
-    setShow(true);
-  };
-  const hideHandler = () => {
-    setShow(false);
-  };
+  // const showHandler = () => {
+  //   setShow(true);
+  // };
+  // const hideHandler = () => {
+  //   setShow(false);
+  // };
 
 
 
   return (
     <div className="App">
-      <Header onShow={showHandler} />
-      {show && <Cart onHide={hideHandler} />}
+      <Header onShow={setShow} />
+      {show && <Cart onHide={setShow} />}
 
       <Routes>
         <Route path="/" element={<Product />} />

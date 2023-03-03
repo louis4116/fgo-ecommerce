@@ -4,6 +4,8 @@ import { useTwZipCode, cities, districts } from "use-tw-zipcode";
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 import { useNavigate } from "react-router-dom";
+import { formSchema } from "../schema/FormSchema";
+import { yupResolver } from '@hookform/resolvers/yup';
 import Swal from "sweetalert2";
 import Summary from "./Summary";
 import classes from "./form.module.css";
@@ -16,7 +18,7 @@ const Form = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({resolver:yupResolver(formSchema)});
   const [cartData, setCartData] = useState([]);
   const navigation = useNavigate();
   const dispatch = useDispatch();
@@ -111,7 +113,7 @@ const Form = () => {
             <input
               type="text"
               id="FirstName"
-              {...register("FirstName", { required: "請輸入姓氏" })}
+              {...register("firstName")}
             />
             {errors.FirstName && (
               <div className={classes.message}>
@@ -124,7 +126,7 @@ const Form = () => {
             <input
               type="text"
               id="SecondName"
-              {...register("SecondName", { required: "請輸入名字" })}
+              {...register("secondName")}
             />
             {errors.SecondName && (
               <div className={classes.message}>
@@ -140,13 +142,7 @@ const Form = () => {
             <input
               type="tel"
               id="phone"
-              {...register("phone", {
-                required: "請輸入手機號碼",
-                pattern: {
-                  value: /^09[0-9]{8}$/,
-                  message: "請輸入正確的手機號碼",
-                },
-              })}
+              {...register("phoneNumber")}
             />
             {errors.phone && (
               <div className={classes.message}>
@@ -159,13 +155,7 @@ const Form = () => {
             <input
               type="email"
               id="email"
-              {...register("email", {
-                required: "請輸入電子郵件",
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "請輸入正確的電子郵件",
-                },
-              })}
+              {...register("email")}
             />
             {errors.email && (
               <div className={classes.message}>
@@ -220,7 +210,7 @@ const Form = () => {
           <input
             type="text"
             id="street"
-            {...register("street", { required: "請輸入地址" })}
+            {...register("street")}
           />
           <div className={classes.message}>
             {errors.street && <p>{errors.street.message}</p>}
