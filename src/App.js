@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Product from "./pages/Product";
 import Header from "./components/header/Header";
 import Cart from "./components/cart/Cart";
 import Checkout from "./pages/Checkout";
 import ProductDetail from "./pages/ProductDetail";
-import { useSelector } from "react-redux";
 
+ 
 import "./app.css";
+
 
 function App() {
   const [show, setShow] = useState(false);
-  const cartItems = useSelector((state) => state.cart.itemS);
+
 
   const showHandler = () => {
     setShow(true);
@@ -19,6 +20,9 @@ function App() {
   const hideHandler = () => {
     setShow(false);
   };
+
+
+
   return (
     <div className="App">
       <Header onShow={showHandler} />

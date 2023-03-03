@@ -12,6 +12,7 @@ const totalNumber =
 
 const initialState = { itemS: itemS, totalNumber: totalNumber };
 
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -111,7 +112,9 @@ const cartSlice = createSlice({
       localStorage.clear();
       return initialState;
     },
+    
   },
+
 });
 
 export const cartActions = cartSlice.actions;
