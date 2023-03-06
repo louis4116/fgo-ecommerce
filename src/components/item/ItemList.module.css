@@ -34,17 +34,21 @@
    background-color: white;
    color: gray;
 }
-.ItemList-category-button1,
+/* .ItemList-category-button1,
 .ItemList-category-button2,
 .ItemList-category-button3{
-    background-color: rgba(236, 236, 236,0.9) !important;
-}
+    background-color: rgba(236, 236, 236,0.9) ;
+} */
 
-.ItemList-category :hover,
-.ItemList-category :active{
+.ItemList-category :hover{
     background-color: rgba(236, 236, 236,0.9);
     animation: 300ms ease-in;
 }
+.ItemList-category-button1:active,
+.ItemList-category-button1:focus{
+    background-color: rgba(236, 236, 236,0.9);
+}
+
 .card{   
         background-color: white;
         display: grid;

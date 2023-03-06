@@ -12,12 +12,9 @@ const Cart = (props) => {
   const check = (e) => {
     e.preventDefault();
 
-    if (cartItems.length === 0) {
-      return;
-    } else {
       navigate("/checkout");
       props.onHide();
-    }
+
   };
   return (
     <Modal onHide={props.onHide}>

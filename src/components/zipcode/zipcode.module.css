@@ -1,0 +1,80 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100vh;
+    flex-wrap: wrap;
+    --input-width:46em;
+}
+
+
+.form-container-address-form >div{
+    padding: 10px 0px;
+}
+.form-container-address-form-name{
+    display: flex;
+}
+
+label{
+    
+    display: inline-block;
+    padding: 3px 6px;
+    text-align: right;
+    width: 6rem;
+    vertical-align: top;
+}
+input{
+    width: var(--input-width);
+}
+
+.form-container-address-form-city input{
+    width: calc((var(--input-width)/2) - 3.6em);
+}
+
+.form-container-address-form-city label{
+    padding:3px 4px;
+}
+.form-container-address-form-city{
+    display: flex;
+}
+.form-container-address-form-city-first{
+    width: 250px;
+}
+.form-container-address-form-city-second{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 8.05em;
+}
+
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+
+@media (max-width:52em) {
+   
+    .form-container-address-form-street input{
+        width: 55vw;
+    }
+
+}
+@media (max-width:46em){
+    .form-container-address-form-city{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-container-address-form-city-second{
+        margin-left: 1.47em;
+        
+    }    
+}
+@media (max-width:30em){
+    .form-container-address-form-street input{
+        width: 45vw;
+    }
+
+}

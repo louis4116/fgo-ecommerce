@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Product from "./pages/Product";
 import Header from "./components/header/Header";
@@ -12,17 +12,6 @@ import "./app.css";
 
 function App() {
   const [show, setShow] = useShow(false);
-console.log(show,setShow)
-
-  // const showHandler = () => {
-  //   setShow(true);
-  // };
-  // const hideHandler = () => {
-  //   setShow(false);
-  // };
-
-
-
   return (
     <div className="App">
       <Header onShow={setShow} />

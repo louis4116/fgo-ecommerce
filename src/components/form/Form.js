@@ -1,69 +1,63 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useRef } from "react";
+import { useForm,FormProvider } from "react-hook-form";
 import { useTwZipCode, cities, districts } from "use-tw-zipcode";
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 import { useNavigate } from "react-router-dom";
-import { formSchema } from "../schema/FormSchema";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { formSchema } from "../schema/FormSchema";
+import ZipCode from "../zipcode/ZipCode";
+import FormInput from "../ui/FormInput";
 import Swal from "sweetalert2";
 import Summary from "./Summary";
 import classes from "./form.module.css";
 
 const Form = () => {
-  const { city, district, zipCode, handleCityChange, handleDistrictChange } =
-    useTwZipCode();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({resolver:yupResolver(formSchema)});
-  const [cartData, setCartData] = useState([]);
+  const { city, district, zipCode, handleCityChange, handleDistrictChange } = useTwZipCode();
   const navigation = useNavigate();
   const dispatch = useDispatch();
-  const districtRef = useRef();
-  const cityRef = useRef();
   const memoRef = useRef();
   const cartItems = useSelector((state) => state.cart.itemS);
   const totalAmount = useSelector((state) => state.totalNumber);
+  const method=useForm({
+    mode:"onSubmit",
+    resolver:yupResolver(formSchema),
+    defaultValues:{
+      firstName:"",
+      secondName:"",
+      phoneNumber:"",
+      email:"",
+      street:""
+    }
+  });
+  const {reset}=method;
 
   const submitHandler = async (value) => {
-    const { FirstName, SecondName, email, phone, street } = value;
-    const district = districtRef.current.value;
+    const { firstName, secondName, email, phoneNumber, street } = value;
     const memo = memoRef.current.value;
-    const city = cityRef.current.value;
     const data = {
-      FirstName,
-      SecondName,
+      firstName,
+      secondName,
       email,
-      phone,
+      phoneNumber,
       street,
+      city, 
+      district, 
       zipCode,
-      district,
       memo,
-      city,
     };
 
     if (cartItems.length === 0) {
-      Swal.fire({
-        title: "錯誤!!",
-        text: "請加入商品!!",
-        icon: "error",
-        confirmButtonText: "關閉",
-      });
       return;
     }
     await fetch(process.env.REACT_APP_API_Order, {
       method: "POST",
       body: JSON.stringify({
         user: data,
-        orderItems: cartData,
+        orderItems: cartItems,
         totalAmount: totalAmount,
       }),
     })
-      .then(() => dispatch(cartActions.clearItem()))
-      .then(() => reset())
       .then(() =>
         Swal.fire({
           title: "成功!!",
@@ -72,22 +66,12 @@ const Form = () => {
           confirmButtonText: "關閉",
         })
       )
+      .then(()=>reset())
       .then(() => navigation("/"))
       .catch((err) => alert(err));
+      dispatch(cartActions.clearItem())
   };
 
-  useEffect(() => {
-    let hhh = [];
-    for (let i = 0; i < cartItems.length; i++) {
-      hhh.push({
-        id: cartItems[i].id,
-        name: cartItems[i].name,
-        number: cartItems[i].number,
-        price: cartItems[i].price,
-      });
-    }
-    setCartData(hhh);
-  }, [cartItems]);
 
   const onStop = (e) => {
     let code = e.keyCode || e.which;
@@ -98,123 +82,44 @@ const Form = () => {
   };
 
   return (
+    <FormProvider {...method}>
     <form
       className={classes["form-container"]}
       onKeyDown={onStop}
-      onSubmit={handleSubmit(submitHandler)}
+      onSubmit={method.handleSubmit(submitHandler)}
     >
       <div className={classes["form-container-address-form"]}>
         <h2 className={classes["form-container-address-form-title"]}>
           個人資料
         </h2>
         <div className={classes["form-container-address-form-name"]}>
-          <div>
-            <label htmlFor="FirstName">姓氏:</label>
-            <input
-              type="text"
-              id="FirstName"
-              {...register("firstName")}
-            />
-            {errors.FirstName && (
-              <div className={classes.message}>
-                <p>{errors.FirstName.message}</p>
-              </div>
-            )}
-          </div>
-          <div>
-            <label htmlFor="SecondName">名字:</label>
-            <input
-              type="text"
-              id="SecondName"
-              {...register("secondName")}
-            />
-            {errors.SecondName && (
-              <div className={classes.message}>
-                <p>{errors.SecondName.message}</p>
-              </div>
-            )}
-          </div>
+           <FormInput 
+          label="firstName"
+          input={{id:"firstName",type:"text",name:"姓氏"}}/>
+          <FormInput 
+          label="secondName"
+          input={{id:"secondName",type:"text",name:"名字"}}/>
         </div>
-
         <div className={classes["form-container-address-form-contact"]}>
-          <div>
-            <label htmlFor="phone">手機號碼:</label>
-            <input
-              type="tel"
-              id="phone"
-              {...register("phoneNumber")}
-            />
-            {errors.phone && (
-              <div className={classes.message}>
-                <p>{errors.phone.message}</p>
-              </div>
-            )}
-          </div>
-          <div>
-            <label htmlFor="email">電子郵件:</label>
-            <input
-              type="email"
-              id="email"
-              {...register("email")}
-            />
-            {errors.email && (
-              <div className={classes.message}>
-                <p>{errors.email.message}</p>
-              </div>
-            )}
-          </div>
+          <FormInput 
+          label="phoneNumber"
+          input={{id:"phoneNumber",type:"tel",name:"手機號碼"}}/>
+            <FormInput 
+          label="email"
+          input={{ id:"email",type:"email",name:"信箱"}}/>
         </div>
-        <div className={classes["form-container-address-form-city"]}>
-          <div className={classes["form-container-address-form-city-first"]}>
-            <label htmlFor="city">縣市:</label>
-            <select
-              id="city"
-              ref={cityRef}
-              onChange={(e) => handleCityChange(e.target.value)}
-              value={city}
-            >
-              {cities.map((city, i) => {
-                return (
-                  <option value={city} key={i}>
-                    {city}
-                  </option>
-                );
-              })}
-            </select>
-            <select
-              id="district"
-              ref={districtRef}
-              onChange={(e) => handleDistrictChange(e.target.value)}
-              value={district}
-            >
-              {districts[city].map((district, i) => {
-                return (
-                  <option value={district} key={i}>
-                    {district}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-
-          <div className={classes["form-container-address-form-city-second"]}>
-            郵遞區號:
-            <div className={classes["form-container-address-form-city-third"]}>
-              {zipCode}
-            </div>
-          </div>
-        </div>
-
+        <ZipCode 
+          city={city} 
+          district={district} 
+          zipCode={zipCode} 
+          cities={cities}
+          districts={districts}
+          handleCityChange={handleCityChange}
+          handleDistrictChange={handleDistrictChange}/>
         <div className={classes["form-container-address-form-street"]}>
-          <label htmlFor="street">地址:</label>
-          <input
-            type="text"
-            id="street"
-            {...register("street")}
-          />
-          <div className={classes.message}>
-            {errors.street && <p>{errors.street.message}</p>}
-          </div>
+          <FormInput 
+          label="street"
+          input={{id:"street",type:"text",name:"地址"}}/>
         </div>
         <div className={classes["form-container-address-form-memo"]}>
           <label htmlFor="memo">備註:</label>
@@ -223,6 +128,7 @@ const Form = () => {
       </div>
       <Summary />
     </form>
+    </FormProvider>
   );
 };
 

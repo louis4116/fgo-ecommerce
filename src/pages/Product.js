@@ -3,6 +3,8 @@ import ItemList from "../components/item/ItemList";
 import Bottom from "../components/bottom/footer-content";
 
 const Product = () => {
+
+
   return (
     <div className="main">
       <ItemList />
