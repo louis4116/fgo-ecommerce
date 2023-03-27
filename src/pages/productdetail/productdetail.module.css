@@ -1,0 +1,9 @@
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-top:5em;
+   margin-right: auto;
+   margin-left: auto;
+    background-color: white;
+}

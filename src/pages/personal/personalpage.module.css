@@ -1,0 +1,46 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+.navbar{
+    margin-top: 13rem;
+    width: 17rem;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    
+}
+.profile{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+.profile h3{
+    display: inline-block;
+    font-size: 3rem;
+    vertical-align: middle;
+}
+.photo{
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 5px 8px gray;
+    border-radius: 50%;
+    border-width: 5px;
+    border-color: gray;
+}
+.navlink{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.outlet{
+    margin:7rem 0 0 3rem;
+}

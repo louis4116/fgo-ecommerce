@@ -1,10 +1,9 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import Product from "./pages/Product";
+import { useRoutes} from "react-router-dom";
 import Header from "./components/header/Header";
 import Cart from "./components/cart/Cart";
-import Checkout from "./pages/Checkout";
-import ProductDetail from "./pages/ProductDetail";
+import { productRoutes} from "./util/Routes";
+import useAccountAuth from "./custom-hook/useAccountState";
 import useShow from "./custom-hook/useShow";
  
 import "./app.css";
@@ -12,21 +11,16 @@ import "./app.css";
 
 function App() {
   const [show, setShow] = useShow(false);
+  const {currentUser}=useAccountAuth();
+  const productRouting=useRoutes(productRoutes(currentUser));
+
+  
   return (
     <div className="App">
       <Header onShow={setShow} />
       {show && <Cart onHide={setShow} />}
-
-      <Routes>
-        <Route path="/" element={<Product />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route
-          path="/checkout"
-          element={ <Checkout />}
-        />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </div>
+        {productRouting}
+    </div> 
   );
 }
 

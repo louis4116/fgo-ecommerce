@@ -1,0 +1,13 @@
+.cartForm label{
+    display: inline-block;
+    padding: 3px 6px;
+    text-align: right;
+    width: 6rem;
+    vertical-align: top;
+}
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}

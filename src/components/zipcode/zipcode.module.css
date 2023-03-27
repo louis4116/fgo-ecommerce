@@ -16,7 +16,7 @@
     display: flex;
 }
 
-label{
+.form-container-address-form-city-first label{
     
     display: inline-block;
     padding: 3px 6px;
@@ -24,9 +24,7 @@ label{
     width: 6rem;
     vertical-align: top;
 }
-input{
-    width: var(--input-width);
-}
+
 
 .form-container-address-form-city input{
     width: calc((var(--input-width)/2) - 3.6em);

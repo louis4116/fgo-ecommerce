@@ -6,7 +6,8 @@ const FormInput = (props) => {
   const {register ,formState: { errors }}=useFormContext();
  
   return (
-    <div>
+      
+        <div className={classes.cartForm}>
             <label htmlFor={label}>{input.name}:</label>
             <input
               {...input}
@@ -18,6 +19,7 @@ const FormInput = (props) => {
               </div>
             ):""}
           </div>
+      
   )
 }
 

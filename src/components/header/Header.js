@@ -1,14 +1,16 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import HeaderButton from "./HeaderButton";
+import NavBar from "./NavBar";
 import classes from "./header.module.css";
 
 const Header = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isChekoutPage = location.pathname === "/checkout";
+  const isLoginPage = location.pathname === "/login"
   return (
-    <React.Fragment>
+    <>
       <header className={classes.header}>
         <h1>
           <img
@@ -20,9 +22,10 @@ const Header = (props) => {
           />
           FGO商品小舖
         </h1>
-        {!isChekoutPage && <HeaderButton onShow={props.onShow} />}
+       {!isChekoutPage&&<NavBar />}
+        {!isChekoutPage && !isLoginPage && <HeaderButton onShow={props.onShow} />}
       </header>
-    </React.Fragment>
+    </>
   );
 };
 

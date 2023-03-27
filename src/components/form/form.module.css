@@ -28,21 +28,13 @@
 }
 .form-container-address-form-name{
     display: flex;
+    margin: auto;
 }
 .form-container-address-form-contact{
     display: flex;
 }
-label{
-    
-    display: inline-block;
-    padding: 3px 6px;
-    text-align: right;
-    width: 6rem;
-    vertical-align: top;
-}
-input{
-    width: var(--input-width);
-}
+
+
 .form-container-address-form-name input,
 .form-container-address-form-city input,
 .form-container-address-form-contact input{
@@ -67,6 +59,16 @@ input{
 .form-container-address-form-memo textarea{
     width: 46em;
     height:10em;
+}
+.form-container-address-form-memo label{
+    display: inline-block;
+    padding: 3px 6px;
+    text-align: right;
+    width: 6rem;
+    vertical-align: top;
+}
+.form-container-address-form-street input{
+    width: var(--input-width);
 }
 .message{
     display: flex;

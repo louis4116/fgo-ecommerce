@@ -1,0 +1,19 @@
+.personal-item{
+    background-color: white;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    width: 45rem;
+    padding: 10px 20px;
+}
+
+.personal-item h2{
+    padding: 15px;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+.personal-item img{
+    width: 150px;
+    height: 100px;
+    
+}
+

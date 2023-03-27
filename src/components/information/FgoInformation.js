@@ -4,9 +4,9 @@ import FgoImg from "./FgoImg";
 import classes from "./FgoInformation.module.css";
 
 const FgoInformation = (props) => {
-  
+  console.log(props)
   return (
-    <div className={classes["fgo-InF"]}>
+    <>
       <FgoImg img2={props.img2} img3={props.img3} />
       <div className={classes["fgo-InF-container"]}>
         <div className={classes["fgo-InF-content"]}>
@@ -29,7 +29,7 @@ const FgoInformation = (props) => {
           number={props.number}
         />
       </div>
-    </div>
+    </>
   );
 };
 

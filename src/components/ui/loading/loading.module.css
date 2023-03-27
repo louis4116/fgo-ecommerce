@@ -1,0 +1,42 @@
+.box{
+    width:100%;
+    
+    display:flex;
+    border-radius:10px;  
+}
+.spinner{
+  position: relative;
+
+  font-size: 24px;
+  color: black;
+  letter-spacing: 2px;
+  margin: auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ letter-spacing: 2px;
+}
+.spinner::after{
+  content: "";
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  border-top: 12px solid rgba(0,0,0,0.25);
+  border-right: 12px solid rgba(0,0,0,0.25);
+  border-bottom: 12px solid rgba(0,0,0,0.25);
+  border-left: 12px solid black;
+  
+    border-radius: 50%;
+   
+    animation: spin 1.3s linear infinite;
+}
+@keyframes spin {
+    from {
+      transform: rorate(0deg);
+    }
+    
+    to {
+      transform: rotate(360deg);
+    }
+  }
+

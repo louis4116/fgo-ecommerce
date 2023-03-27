@@ -2,23 +2,27 @@ import React, { useRef } from "react";
 import { useForm,FormProvider } from "react-hook-form";
 import { useTwZipCode, cities, districts } from "use-tw-zipcode";
 import { useSelector, useDispatch } from "react-redux";
+import { useSetDataMutation} from "../../api/DataSlice";
 import { cartActions } from "../../store/cart-slice";
 import { useNavigate } from "react-router-dom";
+import useAccountAuth from "../../custom-hook/useAccountState";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { formSchema } from "../schema/FormSchema";
 import ZipCode from "../zipcode/ZipCode";
-import FormInput from "../ui/FormInput";
+import FormInput from "../ui/cartform/FormInput";
 import Swal from "sweetalert2";
 import Summary from "./Summary";
 import classes from "./form.module.css";
 
 const Form = () => {
   const { city, district, zipCode, handleCityChange, handleDistrictChange } = useTwZipCode();
+  const [setData]=useSetDataMutation();
+  const {currentUser} =useAccountAuth();
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const memoRef = useRef();
   const cartItems = useSelector((state) => state.cart.itemS);
-  const totalAmount = useSelector((state) => state.totalNumber);
+  const totalAmount = useSelector((state) => state.cart.totalNumber);
   const method=useForm({
     mode:"onSubmit",
     resolver:yupResolver(formSchema),
@@ -31,7 +35,7 @@ const Form = () => {
     }
   });
   const {reset}=method;
-
+  const id=currentUser.uid;
   const submitHandler = async (value) => {
     const { firstName, secondName, email, phoneNumber, street } = value;
     const memo = memoRef.current.value;
@@ -45,19 +49,20 @@ const Form = () => {
       district, 
       zipCode,
       memo,
+      totalAmount
     };
 
     if (cartItems.length === 0) {
       return;
     }
-    await fetch(process.env.REACT_APP_API_Order, {
-      method: "POST",
-      body: JSON.stringify({
-        user: data,
-        orderItems: cartItems,
-        totalAmount: totalAmount,
-      }),
-    })
+    await setData({
+        user:data,
+        orderItems:cartItems,
+        totalAmount:totalAmount,
+        id:id
+      })
+      .then(()=>dispatch(cartActions.clearItem()))
+      .then(()=>reset())
       .then(() =>
         Swal.fire({
           title: "成功!!",
@@ -66,10 +71,9 @@ const Form = () => {
           confirmButtonText: "關閉",
         })
       )
-      .then(()=>reset())
       .then(() => navigation("/"))
       .catch((err) => alert(err));
-      dispatch(cartActions.clearItem())
+      
   };
 
 

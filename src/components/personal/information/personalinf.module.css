@@ -1,0 +1,98 @@
+input[type="file"] {
+    display: none;
+}
+.container{
+    background-color: white;
+    margin-left: 3rem;
+    margin-top: 7rem;
+    width: 45rem;
+    padding: 10px 20px;
+}
+.personalInf-header{
+    padding: 15px ;
+    border-bottom: 1px solid black;
+}
+
+.personalInf-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personalInf-main{
+    display: flex;
+    padding: 15px;
+}
+
+.personalInf-title{
+    width: 10rem;
+}
+.personalInf-detail{
+    vertical-align: middle;
+}
+.personalInf-title{
+    text-align: right;
+    padding-bottom: 20px;
+}
+.personalInf-content{
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 15rem;
+}
+.personalInf-content button{
+    border: none;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.personalInf-content button:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+.personalInf-input{
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+.personalInf-input input{
+    width: 7.5rem;
+    height: 2rem;
+    padding: 12px
+}
+.personalInf-img{
+    display: flex;
+    justify-content: center;
+    width: 15rem;
+    border-left: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+}
+/* .personalInf-img input{
+    margin-top: 20px;
+    text-align-last: center;
+} */
+.personalInf-img img{
+    width: 100px;
+    height: 100px;
+}
+/* .personalInf-file::file-selector-button{
+    background-color: white;
+    border:1px solid rgba(0,0,0,0.25)
+}
+
+.personalInf-file::file-selector-button:hover{
+    
+} */
+
+.file{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.file:hover{
+    background-color: rgba(192,192,192,0.25);
+}

@@ -9,6 +9,14 @@
     --swiper-navigation-size:20px;
     
 }
+body,
+html{
+  height: 100%;
+  width: 1200px;
+  margin: auto;
+  background-color:#dcdcdc;;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }

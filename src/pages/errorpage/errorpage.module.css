@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.container{
+    display: flex;
+ 
+    margin: auto;
+    width: 1200px;
+
+}
+
+.content{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.h1{
+    font-size: 15rem;
+}
+
+.main{
+    font-size: 5rem;
+    margin: auto;
+}
+
+.des{
+    font-size: 1rem;
+}
