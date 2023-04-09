@@ -6,9 +6,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import classes from "./fgoimg.module.css";
 
-const FgoImg = (props) => {
+const FgoImg = ({ img2, img3 }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState();
-  const { img2, img3 } = props;
 
   return (
     <div className={classes.fgoImg}>
@@ -26,14 +25,14 @@ const FgoImg = (props) => {
       >
         <SwiperSlide>
           <img
-            src={props.img2}
+            src={img2}
             className={classes["fgoImg-swiper-slide"]}
             alt="first"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={props.img3}
+            src={img3}
             className={classes["fgoImg-swiper-slide"]}
             alt="second"
           />

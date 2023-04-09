@@ -1,15 +1,12 @@
-.personal-item{
-    background-color: white;
-    margin-left: 3rem;
-    margin-top: 3rem;
-    width: 45rem;
-    padding: 10px 20px;
-}
 
-.personal-item h2{
+
+.personal-item-h2{
     padding: 15px;
     border-bottom: 1px solid black;
     margin-bottom: 1rem;
+}
+.personal-item-h3{
+    text-align: center;
 }
 .personal-item img{
     width: 150px;
@@ -17,3 +14,69 @@
     
 }
 
+.pagination{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    gap:5px;
+    list-style: none;
+    z-index: 2;
+}
+
+.pagination,
+.page-num{
+    padding: 8px 15px;
+    color: black;
+    border-radius: 3px;
+    font-weight: 400;
+    
+}
+.page-num a{
+    color: black;
+}
+.page-num{
+    cursor: pointer;
+}
+.page-num:hover,
+.active{
+    background-color: rgb(192, 188, 188);
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+
+@media screen and (max-width:750px) {
+    .pagination{
+        font-size: 1rem;
+    }
+    .pagination,
+    .page-num{
+    padding: 4px 7px;  
+    }
+.page-num:hover,
+.active{
+    padding: 5px 10px; 
+}
+
+
+}
+
+@media screen and (max-width:550px) {
+    .page-num:hover,
+    .active{
+        padding: 2.5px 5px; 
+    }
+    .pagination,
+    .page-num{
+    padding: 2px 4px;  
+    } 
+}
+
+@media screen and (max-width:450px) {
+    .pagination,
+    .page-num{
+    padding:0;
+    } 
+}

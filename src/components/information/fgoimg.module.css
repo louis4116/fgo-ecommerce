@@ -19,7 +19,6 @@
 .fgoImg-swiper-slide{  
     width: 100%;
     height: auto;
-    object-position: center;
 }
 .fgoImg-container-second{
     width: 200px;
@@ -29,20 +28,18 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
+    object-fit: cover;
+    object-position: center;
 }
  
  
-  @media screen and (max-width:1300px ){
-    .fgoImg-container{
-       width: 40vw;
-        
-    } 
-    .fgoImg-swiper-slide{   
-        max-width: 100%;
-        
-    } 
+  @media screen and (max-width:1000px) {
+        .fgoImg-container{
+            width: 40vw;
+        }
   }
-  
+
+
   @media screen and (max-width:900px){
     .fgoImg-container{
         width: 60vw;
@@ -52,6 +49,9 @@
          max-width: 100%;
          
      } 
+     .fgoImg-container-second{
+        display: none;
+    }
   }
 
   @media screen and (max-width:500px){
@@ -59,7 +59,5 @@
         width: 80vw;
          
      } 
-    .fgoImg-container-second{
-        display: none;
-    }
+   
   }

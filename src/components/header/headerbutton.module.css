@@ -5,15 +5,19 @@
     display: flex;
     font: inherit;
     position: relative;
+   
 }
 
 
 .header-button-icon{
+   display:flex;
+   justify-content: center;
+   align-items: center;
    width: 2.35em;  
 }
 
  .header-button-number{
-    top: -8px;
+    
     left: 27px;
     background-color: red;
     color: white;
@@ -25,7 +29,7 @@
     
 }
 .header-button-number-bump{
-    top: -8px;
+
     left: 27px;
     background-color: red;
     color: white;

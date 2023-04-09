@@ -1,0 +1,57 @@
+.login-content{
+    position: relative;
+    font-size: 24px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    width: 25vw;
+    margin-bottom: 24px;
+}
+
+.login-content-input{
+    font-family: inherit;
+    width: 100%;
+   
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+}
+
+.login-content-input::placeholder{
+    color: transparent;
+}
+.login-content-input:placeholder-shown~ label{
+    font-size: 1.3rem;
+    cursor: text;
+    top: 0;
+    color: black;
+}
+.login-content-label{
+    position: absolute;
+    color:gray;
+    width: 100%;
+    left:0;
+    font-size: 1rem;
+    top:-20px;
+    transition-duration: 0.3s;
+    pointer-events:none;
+   
+}
+.login-content input:focus ~ label{
+    top:-20px;
+    font-size: 1rem;
+    color: gray;
+}
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 16px;
+}
+
+
+

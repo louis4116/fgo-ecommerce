@@ -2,8 +2,6 @@ import React,{useEffect,useState} from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import { useFetchDataQuery } from "../../api/DataSlice";
 import FgoInformation from "../../components/information/FgoInformation";
-import Bottom from "../../components/bottom/footer-content";
-import ErrorPage from "../errorpage/ErrorPage";
 import Loading from "../../components/ui/loading/Loading";
 import classes from "./productdetail.module.css"
 
@@ -12,9 +10,9 @@ const ProductDetail = () => {
   const params = useParams();
   const navigate=useNavigate()
  
-  const {data,error,isLoading}=useFetchDataQuery();
+  const {data,isLoading}=useFetchDataQuery();
 
-
+  //判斷特定商品的編號，以顯示該商品的詳細訊息
   useEffect(()=>{
     const check=data?.find((item)=>item.id===params.id)
     if(check){
@@ -23,9 +21,6 @@ const ProductDetail = () => {
     }else{
        navigate("*")
     }
-    
-
-    
   },[params.id,isLoading])
  
 

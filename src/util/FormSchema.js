@@ -12,13 +12,13 @@ export const formSchema=yup.object({
 });
 
 export const loginSchema=yup.object({
-    email:yup.string().email("電子郵件格式錯誤").required("欄位不得為空"),
-    password:yup.string().min(5,"密碼長度不得低於五位數").max(12,"密碼長度不得超過12位數").required("欄位不得為空")
+    loginEmail:yup.string().email("電子郵件格式錯誤").required("欄位不得為空"),
+    loginPassword:yup.string().min(5,"密碼長度不得低於五位數").max(12,"密碼長度不得超過12位數").required("欄位不得為空")
 })
 
 export const signupSchema=yup.object({
     userName:yup.string().matches(userNameValid,"格式錯誤!!").min(3,"稱號不可低於3個字元!!").max(10,"稱號不可大於10個字元!!").required("欄位不得為空"),
-    email:yup.string().email("電子郵件格式錯誤").required("欄位不得為空"),
-    password:yup.string().min(5,"密碼長度不得低於五位數").max(12,"密碼長度不得超過12位數").required("欄位不得為空"),
+    singupEmail:yup.string().email("電子郵件格式錯誤").required("欄位不得為空"),
+    signupPassword:yup.string().min(5,"密碼長度不得低於五位數").max(12,"密碼長度不得超過12位數").required("欄位不得為空"),
     confirmPassword:yup.string().oneOf([yup.ref("password"),null],"密碼不符合!!").required("欄位不得為空")
 })

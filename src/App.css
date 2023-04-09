@@ -12,11 +12,13 @@
 body,
 html{
   height: 100%;
-  width: 1200px;
+  max-width: 1200px;
   margin: auto;
-  background-color:#dcdcdc;;
+  background-color:#dcdcdc;
 }
-
+.loading{
+ margin-top: 14rem;
+}
 body::-webkit-scrollbar {
     display: none;
 }
@@ -33,37 +35,24 @@ background-color: white !important;
     bottom:0px !important ;
 }
 ::-webkit-scrollbar {
-
     width: 7px;
-
   }
 
   ::-webkit-scrollbar-button {
-
     background: transparent;
-
     border-radius: 4px;
-
   }
 
   ::-webkit-scrollbar-track-piece {
-
     background: transparent;
-
   }
 
   ::-webkit-scrollbar-thumb {
-
     border-radius: 4px;
-
     background-color: rgba(0, 0, 0, 0.4);
-
     border: 1px solid slategrey;
-
   }
 
   ::-webkit-scrollbar-track {
-
     box-shadow: transparent;
-
   }

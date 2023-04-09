@@ -7,7 +7,7 @@ const ErrorPage = () => {
     const [time,setTime]=useState(3)
     const navigate=useNavigate();
 
-
+    //時間到會自動跳轉到首頁
     useEffect(()=>{
           let countTime;
            if(time>0){

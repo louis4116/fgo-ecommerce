@@ -1,5 +1,5 @@
 import {createApi,fakeBaseQuery} from "@reduxjs/toolkit/query/react";
-import { createUserWithEmailAndPassword,updateProfile, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,updateProfile, signInWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 import {auth,storage} from "./firebase";
 import { getDownloadURL,  ref, uploadBytes } from "firebase/storage";
 
@@ -10,8 +10,8 @@ export const authApi=createApi({
         signUpSlice:builder.mutation({
             async queryFn(data){
                 try{
-                    const {userName,email,password}=data;
-                    const {user}=await createUserWithEmailAndPassword(auth,email,password);
+                    const {userName,signupEmail,signupPassword}=data;
+                    const {user}=await createUserWithEmailAndPassword(auth,signupEmail,signupPassword);
                     await  updateProfile(user,{
                         displayName:userName
                     })
@@ -24,8 +24,9 @@ export const authApi=createApi({
         loginSlice:builder.mutation({
             async queryFn(data){
                 try{
-                const {email,password}=data;
-                await signInWithEmailAndPassword(auth,email,password)
+                const {loginEmail,loginPassword}=data;
+                console.log(data)
+                await signInWithEmailAndPassword(auth,loginEmail,loginPassword)
              
                 return {data:"登入成功!!"}
                 }catch(e){
@@ -47,9 +48,19 @@ export const authApi=createApi({
                     return {error:e}
                 }
             }
+        }),
+        sendEmailVerified:builder.mutation({
+            async queryFn(currentUser){
+                try{
+                    await sendEmailVerification(currentUser);
+                    return {data:"已傳送認證信"}
+                }catch(e){
+                    return {error:e}
+                }
+            }
         })
     })
 })
 
 
-export const {useSignUpSliceMutation,useLoginSliceMutation,useUpdatedProfileMutation}=authApi;
+export const {useSignUpSliceMutation,useLoginSliceMutation,useUpdatedProfileMutation,useSendEmailVerifiedMutation}=authApi;

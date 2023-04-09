@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./mainitem.module.css";
 
-const MainItem = (props) => {
+const MainItem = ({id,price,img,title}) => {
   const navigate = useNavigate();
 
   const navigateHandler = (e) => {
     e.stopPropagation();
-    navigate(`/products/${props.id}`);
+    navigate(`/products/${id}`);
   };
   
   return (
@@ -15,14 +15,12 @@ const MainItem = (props) => {
       <div className={classes.mainItem} onClick={navigateHandler}>
         <img
           className={classes["mainItem-img"]}
-          src={props.img}
+          src={img}
           alt="商品項目"
         />
-
-        <h3>{props.title}</h3>
-
+        <h3>{title}</h3>
         <div className={classes["mainItem-content"]}>
-          <div className={classes["mainItem-button"]}>${props.price}</div>
+          <div className={classes["mainItem-button"]}>${price}</div>
         </div>
       </div>
     </div>

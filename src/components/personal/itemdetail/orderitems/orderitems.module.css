@@ -1,0 +1,31 @@
+.orderitems-container{
+    display: flex;
+    align-items: center;
+}
+
+.orderitems-img{
+    width: 150px;
+    height: 100px;
+}
+.orderitems-detail{
+    display: flex;
+    flex: 1;
+    
+}
+.orderitems-name{
+    padding-left: 12px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.orderitems-bottom{
+    padding: 5px 0px;
+    border-bottom: 1px dotted rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width:450px) {
+    .orderitems-img{
+        width: 100px;
+        height: 80px;
+    }
+}

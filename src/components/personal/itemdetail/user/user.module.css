@@ -1,0 +1,27 @@
+.consignee-container{
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.consignee-detail{
+    overflow: scroll;
+}
+.consignee-detail div{
+    border-bottom: 1px solid black;
+}
+
+.consignee-price div{
+    text-align: center;    
+    font-size: 24px;
+}
+
+@media screen and (max-width:550px) {
+    .consignee-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .consignee-price div{
+        text-align: left;
+    }
+}

@@ -1,6 +1,7 @@
 .container{
     width: 100%;
     display: flex;
+    
 }
 .navbar{
     margin-top: 13rem;
@@ -43,4 +44,42 @@
 
 .outlet{
     margin:7rem 0 0 3rem;
+}
+.outlet-container{
+    background-color: white;
+    width: 45rem;
+    padding: 10px 20px;
+    margin-top: 3rem;
+}
+
+.personalpage-loading{
+    margin-top: 14rem;
+    background-color: transparent;
+}
+.link-active{
+    color: rgb(54, 53, 53);
+    text-decoration: none;
+}
+.link-inactive{
+    color: rgb(139, 135, 135);
+    text-decoration: none;
+}
+@media screen and (max-width:1050px) {
+    .container{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .navbar{
+        margin-top: 8rem;
+    }
+    .outlet{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .outlet-container{
+        max-width: 70vw;
+    }
 }

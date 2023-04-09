@@ -5,6 +5,7 @@
     padding: 15px 10px;
     flex-direction: column;
     border-color: black;
+    background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     height: 27em;
     margin-left: 10px;
@@ -48,17 +49,14 @@
 }
 
 
-@media screen and  (max-width:700px){
+@media screen and  (max-width:840px){
     .summary{
         margin-top: 2em;
     }
     .summary-title{
         width: 70vw;
     }    
-    .summary-content{
-        width: 65vw;
-    }
-    
+   
 }
 @media screen and (max-width:650px) {
     .summary-button{

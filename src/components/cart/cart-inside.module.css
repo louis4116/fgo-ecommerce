@@ -8,6 +8,8 @@
     max-width: 150px;
     max-height: 120px;
     border-radius: 20px;
+    object-fit: cover;
+    object-position: center;
 }
 .cart-item{
     margin: 5px 10px;
@@ -25,7 +27,7 @@
     font-weight: bold;
 }
 
-.cart-div-1{
+.cart-inside-price{
 margin-top: 1rem;
 font-size: 20px;
 }

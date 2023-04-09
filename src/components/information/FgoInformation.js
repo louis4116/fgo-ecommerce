@@ -3,33 +3,33 @@ import FgoInfButton from "./FgoInfbutton";
 import FgoImg from "./FgoImg";
 import classes from "./FgoInformation.module.css";
 
-const FgoInformation = (props) => {
-  console.log(props)
+const FgoInformation = ({img,img2,img3,manufacturer,scale,size,des,id,price,title,number}) => {
+  
   return (
-    <>
-      <FgoImg img2={props.img2} img3={props.img3} />
+    <div className={classes["fgo-InF"]}>
+      <FgoImg img2={img2} img3={img3} />
       <div className={classes["fgo-InF-container"]}>
         <div className={classes["fgo-InF-content"]}>
-          <h2>{props.title}</h2>
-          <p>製造商:{props.manufacturer}</p>
-          <p>比例:{props.scale}</p>
-          <p>規格:{props.size}</p>
+          <h2>{title}</h2>
+          <p>製造商:{manufacturer}</p>
+          <p>比例:{scale}</p>
+          <p>規格:{size}</p>
           <p>商品描述:</p>
           <p
             className={classes["fgo-InF-content-des"]}
-            dangerouslySetInnerHTML={{ __html: props.des }}
+            dangerouslySetInnerHTML={{ __html: des }}
           ></p>
         </div>
 
         <FgoInfButton
-          id={props.id}
-          price={props.price}
-          title={props.title}
-          img={props.img}
-          number={props.number}
+          id={id}
+          price={price}
+          title={title}
+          img={img}
+          number={number}
         />
       </div>
-    </>
+    </div>
   );
 };
 

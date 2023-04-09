@@ -1,21 +1,23 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 import classes from "./summaryitem.module.css";
 
-const SummaryItem = (props) => {
-  const { name, price, id, number, img } = props.item;
+const SummaryItem = ({ name, price, id, number, img }) => {
+ 
   const dispatch = useDispatch();
   const allDelete = () => {
     dispatch(cartActions.removeAllItem(id));
   };
   return (
-    <Fragment>
+    <>
       <ul className={classes["summary-item"]}>
         <img className={classes["summary-item-img"]} src={img} alt="商品圖片" />
 
         <div className={classes["summary-item-first"]}>
+          <div>
           <h3>{name}</h3>
+          </div>
           <div className={classes["summary-item-price"]}>
             <span className={classes["summary-item-price-second"]}>
               ${price}
@@ -31,7 +33,7 @@ const SummaryItem = (props) => {
           <button onClick={allDelete}>刪除</button>
         </div>
       </ul>
-    </Fragment>
+    </>
   );
 };
 

@@ -3,10 +3,9 @@ input[type="file"] {
 }
 .container{
     background-color: white;
-    margin-left: 3rem;
-    margin-top: 7rem;
     width: 45rem;
     padding: 10px 20px;
+    margin-top: 3rem;
 }
 .personalInf-header{
     padding: 15px ;
@@ -30,9 +29,11 @@ input[type="file"] {
 .personalInf-detail{
     vertical-align: middle;
 }
+
 .personalInf-title{
     text-align: right;
     padding-bottom: 20px;
+ 
 }
 .personalInf-content{
     padding-bottom: 20px;
@@ -52,6 +53,10 @@ input[type="file"] {
 .personalInf-content button:hover{
     background-color: rgba(0,0,0,0.5);
 }
+.personalInf-verified{
+    padding: 0px 10px;
+}
+
 .personalInf-input{
     padding-bottom: 20px;
     padding-left: 20px;
@@ -69,22 +74,12 @@ input[type="file"] {
     flex-direction: column;
     align-items: center;
 }
-/* .personalInf-img input{
-    margin-top: 20px;
-    text-align-last: center;
-} */
+
 .personalInf-img img{
     width: 100px;
     height: 100px;
 }
-/* .personalInf-file::file-selector-button{
-    background-color: white;
-    border:1px solid rgba(0,0,0,0.25)
-}
 
-.personalInf-file::file-selector-button:hover{
-    
-} */
 
 .file{
     border: 1px solid #ccc;
@@ -95,4 +90,30 @@ input[type="file"] {
 }
 .file:hover{
     background-color: rgba(192,192,192,0.25);
+}
+
+@media screen and (max-width:750px) {
+    .container{
+        max-width: 70vw;
+    }
+}
+@media screen and (max-width:600px) {
+    .personalInf-main{
+        flex-direction: column;
+    }
+    .personalInf-img{
+        border: none;
+        border-top: 1px solid black;
+        width: 100%;
+    }
+    .personalInf-img img{
+        margin-top: 10px;
+    }
+}
+
+
+@media screen and (max-width:400px) {
+    .personalInf-title{
+        padding: 0;
+    }
 }

@@ -1,15 +1,14 @@
-import { lazy,Suspense } from "react";
-import { Navigate,Outlet } from "react-router-dom";
-import Product from "../pages/product/Product";
-import Checkout from "../pages/checkout/Checkout";
-import ProductDetail from "../pages/productdetail/ProductDetail";
-import Personalpage from "../pages/personal/Personalpage";
-import AccountPage from "../pages/accountpage/AccountPage";
-import ErrorPage from "../pages/errorpage/ErrorPage";
-import PersonalINF from "../components/personal/information/PersonalINF";
-import PersonalItem from "../components/personal/item/PersonalItem";
-import ItemDetail from "../components/personal/itemdetail/ItemDetail";
-import ProtectedRoute from "./ProtectedRoute";
+import { lazy} from "react";
+const Product =lazy(()=>import("../pages/product/Product"));
+const Checkout=lazy(()=>import("../pages/checkout/Checkout"));
+const ProductDetail=lazy(()=>import("../pages/productdetail/ProductDetail"));
+const PersonalPage=lazy(()=>import("../pages/personal/Personalpage"));
+const AccountPage=lazy(()=>import("../pages/accountpage/AccountPage"));
+const ErrorPage=lazy(()=>import("../pages/errorpage/ErrorPage"));
+const PersonalINF=lazy(()=>import("../components/personal/information/PersonalINF"));
+const PersonalItem=lazy(()=>import("../components/personal/item/PersonalItem"));
+const ItemDetail=lazy(()=>import("../components/personal/itemdetail/ItemDetail"));
+
 
 
 export const productRoutes=(currentUser)=>[
@@ -31,7 +30,8 @@ export const productRoutes=(currentUser)=>[
     },
     {
         path:"personal", 
-        element:currentUser?<Personalpage />:<ErrorPage />,
+        //查看用戶是否登入
+        element:currentUser?<PersonalPage />:<ErrorPage />,
         children:[
             {path:"",element:<PersonalINF />},
             {path:"order",element:<PersonalItem />},

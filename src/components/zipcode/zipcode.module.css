@@ -15,7 +15,11 @@
 .form-container-address-form-name{
     display: flex;
 }
-
+.form-container-address-form-city{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.form-container-address-form-city-second label,
 .form-container-address-form-city-first label{
     
     display: inline-block;
@@ -24,7 +28,10 @@
     width: 6rem;
     vertical-align: top;
 }
-
+.form-container-address-form-city-third{
+    display: flex;
+    align-items: center;
+}
 
 .form-container-address-form-city input{
     width: calc((var(--input-width)/2) - 3.6em);
@@ -33,16 +40,13 @@
 .form-container-address-form-city label{
     padding:3px 4px;
 }
-.form-container-address-form-city{
-    display: flex;
-}
+
 .form-container-address-form-city-first{
     width: 250px;
 }
 .form-container-address-form-city-second{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 8.05em;
 }
 
 .message{

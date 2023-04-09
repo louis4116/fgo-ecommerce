@@ -2,13 +2,11 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .fgo-InF-content-quantity{
-   
-    margin-right: 10px;
-    
+    margin-right: 10px; 
 }
 .fgo-InF-content-minus,
 .fgo-InF-content-plus {
@@ -24,53 +22,35 @@
     padding: 6px 15px;
 }
 .fgo-InF-content-button{
-    
-    padding: 17px 40px;
+    padding: 10px 20px;
     background-color: black;
-    margin-left: 15vw;
-    font-size: 18px;
+    margin-left: 12rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: white;
-    
+    color: white; 
     cursor: pointer;
-    width: 175px;
+    width: 150px;
 }
 .fgo-InF-content-button:hover{
     background-color: rgba(0,0,0,0.75);
 }
 
 
-@media screen and  (max-width:1200px){
+
+
+@media screen and  (max-width:1100px){
+    .fgo-InF-content-second{
+        margin-top: 50px;
+    }
+    .fgo-InF-content-button{
+        margin-left: 5rem;
+    }
    
-    .fgo-InF-content-button{
-        margin-left: 10vw;
-    }
 }
-
-@media screen and  (max-width:1000px){
-    .fgo-InF-content-button{
-        width: 150px;
-        padding: 10px 15px;
-        font-size: 16px;
-        margin-left: 5vw;
+@media screen and (max-width:900px) {
+    .fgo-InF-content-second{
+        margin-top: 0;
     }
-
-    .fgo-InF-content-quantity{
-        width: 10vw;
-    }
-    .fgo-InF-content-minus,
-.fgo-InF-content-plus {
-    cursor: pointer;
-    border: 1px solid gray;
-    padding: 10px 20px;
-    user-select: none;
-    
-}
-
-.fgo-InF-content-num{
-    border: 1px solid gray;
-    padding: 10px 15px;
-}
 }
 @media screen and (max-width:700px) {
     .fgo-InF-content-button{
@@ -84,8 +64,17 @@
         
         width: 10vw;
     }
+
+}
+@media screen and (max-width:520px){
+    .fgo-InF-content-button{
+        width: 150px;
+        padding: 8px 17px;
+        font-size: 14px;
+        margin-left: 5vw;
+    }
     .fgo-InF-content-minus,
-.fgo-InF-content-plus {
+    .fgo-InF-content-plus {
     cursor: pointer;
     border: 1px solid gray;
     padding: 4px 12px;
@@ -93,16 +82,8 @@
     
 }
 
-.fgo-InF-content-num{
+    .fgo-InF-content-num{
     border: 1px solid gray;
     padding: 4px 8px;
 }
-}
-@media screen and (max-width:500px){
-    .fgo-InF-content-button{
-        width: 150px;
-        padding: 8px 17px;
-        font-size: 14px;
-        margin-left: 5vw;
-    }
 }

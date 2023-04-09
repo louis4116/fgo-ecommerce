@@ -1,28 +1,38 @@
-import React, { useRef } from "react";
-import { useForm,FormProvider } from "react-hook-form";
-import { useTwZipCode, cities, districts } from "use-tw-zipcode";
+import React, { useRef,useEffect,useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useSetDataMutation} from "../../api/DataSlice";
-import { cartActions } from "../../store/cart-slice";
 import { useNavigate } from "react-router-dom";
+import useShow from "../../custom-hook/useShow";
 import useAccountAuth from "../../custom-hook/useAccountState";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { formSchema } from "../schema/FormSchema";
 import ZipCode from "../zipcode/ZipCode";
 import FormInput from "../ui/cartform/FormInput";
 import Swal from "sweetalert2";
 import Summary from "./Summary";
 import classes from "./form.module.css";
+import {  useForm,
+  FormProvider,
+  useTwZipCode,
+  cities,
+  districts,
+  useSetDataMutation,
+  cartActions,
+  yupResolver,
+  formSchema,
+  debounce,
+  FormFileds} from "./util"
 
 const Form = () => {
+  const [show, setShow] = useShow(true);
+  //台灣的郵遞區號
   const { city, district, zipCode, handleCityChange, handleDistrictChange } = useTwZipCode();
   const [setData]=useSetDataMutation();
   const {currentUser} =useAccountAuth();
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const memoRef = useRef();
-  const cartItems = useSelector((state) => state.cart.itemS);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalPrice = cartItems.reduce((pre, cur) => pre + cur.allPrice, 0);
   const totalAmount = useSelector((state) => state.cart.totalNumber);
+  //react-hook-form
   const method=useForm({
     mode:"onSubmit",
     resolver:yupResolver(formSchema),
@@ -35,48 +45,56 @@ const Form = () => {
     }
   });
   const {reset}=method;
-  const id=currentUser.uid;
-  const submitHandler = async (value) => {
-    const { firstName, secondName, email, phoneNumber, street } = value;
-    const memo = memoRef.current.value;
-    const data = {
-      firstName,
-      secondName,
-      email,
-      phoneNumber,
-      street,
-      city, 
-      district, 
-      zipCode,
-      memo,
-      totalAmount
-    };
+  const id=currentUser?.uid;
 
-    if (cartItems.length === 0) {
-      return;
-    }
-    await setData({
-        user:data,
-        orderItems:cartItems,
-        totalAmount:totalAmount,
-        id:id
-      })
-      .then(()=>dispatch(cartActions.clearItem()))
-      .then(()=>reset())
-      .then(() =>
-        Swal.fire({
-          title: "成功!!",
-          text: "感謝您的消費，關閉提示窗將會跳轉至首頁。。。",
-          icon: "success",
-          confirmButtonText: "關閉",
+  const submitHandler =useCallback( 
+    //使用debounce不讓資訊連續傳送到後台 
+    debounce( async (value) => {
+        const { firstName, secondName, email, phoneNumber, street } = value;
+        const memo = memoRef.current.value;
+        const data = {
+          firstName,
+          secondName,
+          email,
+          phoneNumber,
+          street,
+          city, 
+          district, 
+          zipCode,
+          memo,
+          totalAmount
+        };
+        if (cartItems.length === 0) {
+          return;
+        }
+        await setData({
+          user:data,
+          orderItems:cartItems,
+          totalAmount:totalAmount,
+          totalPrice:totalPrice,
+          id:id
         })
-      )
-      .then(() => navigation("/"))
-      .catch((err) => alert(err));
-      
-  };
+        .then(()=>dispatch(cartActions.clearItem()))
+        .then(()=>reset())
+        .then(() =>
+          Swal.fire({
+            title: "成功!!",
+            text: "感謝您的消費，關閉提示窗將會跳轉至首頁。。。",
+            icon: "success",
+            confirmButtonText: "關閉",
+          })
+        )
+        .then(() => navigation("/"))
+        .catch((err) =>  Swal.fire({
+          title: "錯誤!!",
+          text: "關閉提示窗將會跳轉至首頁。。。",
+          icon: "error",
+          confirmButtonText: "關閉",
+        }))
+    },1500)
+    , [id]);
 
-
+  //防止使用者按enter會觸發到表單提交
   const onStop = (e) => {
     let code = e.keyCode || e.which;
     if (code === 13) {
@@ -84,6 +102,10 @@ const Form = () => {
       return false;
     }
   };
+  //清除debounce
+  useEffect(()=>{
+    return () => {submitHandler.cancel();}
+  },[submitHandler])
 
   return (
     <FormProvider {...method}>
@@ -96,21 +118,11 @@ const Form = () => {
         <h2 className={classes["form-container-address-form-title"]}>
           個人資料
         </h2>
-        <div className={classes["form-container-address-form-name"]}>
-           <FormInput 
-          label="firstName"
-          input={{id:"firstName",type:"text",name:"姓氏"}}/>
-          <FormInput 
-          label="secondName"
-          input={{id:"secondName",type:"text",name:"名字"}}/>
-        </div>
-        <div className={classes["form-container-address-form-contact"]}>
-          <FormInput 
-          label="phoneNumber"
-          input={{id:"phoneNumber",type:"tel",name:"手機號碼"}}/>
-            <FormInput 
-          label="email"
-          input={{ id:"email",type:"email",name:"信箱"}}/>
+        <div className={classes["form-container-address-form-content"]}>
+          {FormFileds.map((item)=>(<FormInput 
+          key={item.name} 
+          label={item.label}
+          input={{id:item.id,type:item.type,name:item.name}}/>))}
         </div>
         <ZipCode 
           city={city} 
@@ -130,7 +142,7 @@ const Form = () => {
           <textarea id="memo" ref={memoRef}></textarea>
         </div>
       </div>
-      <Summary />
+      <Summary show={show} setShow={setShow}/>
     </form>
     </FormProvider>
   );

@@ -38,7 +38,7 @@ const ZipCode =(props) => {
           </div>
 
           <div className={classes["form-container-address-form-city-second"]}>
-            郵遞區號:
+            <label>郵遞區號:</label>
             <div className={classes["form-container-address-form-city-third"]}>
               {zipCode}
             </div>

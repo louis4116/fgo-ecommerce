@@ -1,10 +1,11 @@
-
-
-
-
 .item-intro{
     display: flex;
     align-items: center;
+    overflow-y:scroll;
+}
+.item-intro img{
+    width: 150px;
+    height: 100px;
 }
 .item-bottom{
     padding: 5px 0px;
@@ -47,4 +48,11 @@ padding-right: 12px;
 .item-delete{
     position: absolute;
     z-index: 5;
+}
+
+@media screen and (max-width:450px) {
+    .item-intro img{
+        width: 100px;
+        height: 80px;
+    }
 }

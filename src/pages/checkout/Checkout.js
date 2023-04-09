@@ -9,7 +9,8 @@ const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.itemS);
   const {currentUser}=useAccountAuth();
   const navigate=useNavigate();
- 
+  
+  //導向登入頁面
   const swalToLogin=useCallback(()=>{Swal.fire({
     text: "請先登入!!!",
     imageUrl:"https://i.kym-cdn.com/photos/images/original/001/277/588/063.gif",
@@ -19,6 +20,8 @@ const Checkout = () => {
     timer:3000
 }).then(()=>navigate("/login"))},[]);
 
+
+  //導向商品首頁
   const swalToProduct=useCallback(()=>{Swal.fire({
           text: "請將商品加入購物車!!!",
           imageUrl:"https://i.kym-cdn.com/photos/images/original/001/277/588/063.gif",
@@ -28,15 +31,14 @@ const Checkout = () => {
           timer:3000
   }).then(()=>navigate("/"))},[]);
   
-
+  //判斷是否登入或是購物車有沒有商品
   useEffect(()=>{
     if(!currentUser){
-      console.log("ttttttt")
       swalToLogin();
-    }
-    if(cartItems.length===0){
+    }else if(cartItems?.length===0){
       swalToProduct();  
     }
+  
   },[cartItems,currentUser])
 
 

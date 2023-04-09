@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 
 import classes from "./fgoinf-button.module.css";
-const FgoInfButton = (props) => {
-  const { id, price, title, img, number } = props;
+const FgoInfButton = ({ id, price, title, img, number }) => {
+ 
 
   const dispatch = useDispatch();
 

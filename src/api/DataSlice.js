@@ -1,10 +1,11 @@
 import {createApi,fakeBaseQuery} from "@reduxjs/toolkit/query/react";
 import { db } from "./firebase";
-import { collection,getDocs,addDoc,setDoc,doc } from "firebase/firestore";
+import { collection,getDocs,getDoc,addDoc,deleteDoc,doc } from "firebase/firestore";
 
 export const fgoApi=createApi({
     reducerPath:"fgoApi",
     baseQuery:fakeBaseQuery(),
+    tagTypes:["userdata"],
     endpoints:(builder)=>({
         fetchData:builder.query({
            async queryFn(){
@@ -20,14 +21,31 @@ export const fgoApi=createApi({
                 }catch(e){
                     return{error:e}
                 }
-            }
+            },
+           
+        }),
+        setData:builder.mutation({
+            async queryFn(data){
+                try{
+                  const {user,orderItems,totalAmount,totalPrice,id}=data;
+                  console.log(totalPrice);
+                  console.log(data);
+                  await addDoc(collection(db,id),{
+                    user,orderItems,totalAmount,totalPrice
+                  })
+                    return { data: 'ok' }
+                }catch(e){
+                    return {error:e}
+                }
+            },
+            invalidatesTags:["userdata"]
         }),
         fetchUserData:builder.query({
-            async queryFn(id){
-                try{
-                    const userData=collection(db,id);
-                    const fetchData= await getDocs(userData);
-                    
+            async queryFn(uid){
+                try{  
+                    console.log("fetchUserData test")                 
+                    const userData=collection(db,uid);
+                    const fetchData= await getDocs(userData); 
                     let data=[];
                     let name=[];
                     let result=[];
@@ -43,35 +61,46 @@ export const fgoApi=createApi({
                 }catch(e){
                     return{error:e}
                 }
-            }
+            },
+            providesTags:["userdata"]
         }),
         fetchItemDetailData:builder.query({
             async queryFn(data){
                 try{   
-                   const {uid,id}=data;
-                   console.log(id);
-                   console.log(uid)
-                   return {data:"ok"}
-                }catch(e){
-                    console.log(e)
-                }
-            }
-        }),
-        setData:builder.mutation({
-            async queryFn(data){
-                try{
-                  const {user,orderItems,totalAmount,id}=data
-                  await addDoc(collection(db,id),{
-                    user,orderItems,totalAmount
-                  })
-                    return { data: 'ok' }
+                    console.log("fetchItemDetailData test")
+                    const {uid,id}=data;
+                    const docRef=doc(db,uid,id);
+                    const fetchData=await getDoc(docRef);
+                    let result;
+                    if(fetchData.exists()){
+                     result=fetchData.data()
+                    }
+                   return {data:result}
                 }catch(e){
                     return {error:e}
                 }
-            }
+            },
+           providesTags:["userdata"]
+        }),
+        deleteData:builder.mutation({
+            async queryFn(data){
+                try{
+                    const {uid,id}=data;
+                    const docRef=doc(db,uid,id);
+                    await deleteDoc(docRef);
+                    return {data:"刪除成功"}
+                }catch(e){
+                    return {error:e}
+                }
+            },
+            invalidatesTags:["userdata"]
         })
     })
 })
 
 
-export const {useFetchDataQuery,useFetchUserDataQuery,useSetDataMutation,useFetchItemDetailDataQuery} = fgoApi;
+export const {useFetchDataQuery,
+              useFetchUserDataQuery,
+              useSetDataMutation,
+              useFetchItemDetailDataQuery,
+              useDeleteDataMutation} = fgoApi;

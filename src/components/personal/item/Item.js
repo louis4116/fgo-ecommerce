@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from "./item.module.css";
-const Item = (props) => {
+const Item = ({name,orderItems,totalAmount,totalPrice}) => {
  const navigate=useNavigate();
-  const {name,orderItems,totalAmount}=props;
   const navigateHanler=()=>{
     navigate(`/personal/order/${name}`)
-  }
+  };
+  //0是第一個項目，只顯示第一個項目
   return (
     <>
       <div className={classes["item-intro"]} > 
@@ -35,7 +35,7 @@ const Item = (props) => {
       
       <div className={classes["item-all-price"]}>
       訂單金額:
-      <span>${orderItems[0].allPrice}</span>
+      <span>${totalPrice}</span>
       </div>
     </div>
     

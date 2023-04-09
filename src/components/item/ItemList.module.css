@@ -18,26 +18,6 @@
    margin-left: 5px;
    
 }
-.ItemList-category button{
-    font-size: 1.5em;
-    border :2px ;
-    border-radius: 20px;
-   cursor: pointer;
-   padding: 7px 10px;
-   margin-top: 1rem;
-   margin-right: 1.5rem;
-   background-color: white;
-   color: gray;
-}
-
-.ItemList-category :hover{
-    background-color: rgba(236, 236, 236,0.9);
-    animation: 300ms ease-in;
-}
-.ItemList-category-button1:active,
-.ItemList-category-button1:focus{
-    background-color: rgba(236, 236, 236,0.9);
-}
 
 .card{   
         background-color: white;
@@ -48,6 +28,9 @@
     
     margin-bottom: 60px;
 }
+.ItemList-loading{
+    margin: 10rem;
+}
 .card::-webkit-scrollbar{
     display: none;
 }
@@ -56,6 +39,7 @@
 
 @media screen and  (max-width:1250px){
     .ItemList-first{
+        display: flex;
         flex-direction: column;
         justify-content: center;
         margin-top: 0;
@@ -66,32 +50,40 @@
     }
     .ItemList-category{
         position: relative;
+        margin: 0;
     }
     .ItemList-fixed,
     .ItemList-category{
-        width: 100vw;
+        min-width:90vw;
+        
+    }
+    .ItemList-category button{
+        margin-top: 1rem;
+        margin-right: 0;
     }
     .card{
-        width: 99vw;
-        padding: 0;
-       
-        grid-template-columns: repeat(4,1fr);
+      
+       padding: 0;
+       grid-template-columns: repeat(4,1fr);
+       justify-content: center;
+       margin-top: 1rem;
+       width: 90vw
     }
 } 
-@media screen and  (max-width:875px){
+@media screen and  (max-width:900px){
     .card{
         grid-template-columns: repeat(3,1fr);
     }
 }
 
-@media screen and  (max-width:672px){
+@media screen and  (max-width:700px){
     .card{
-        width: 100vw;
+       
         padding: 0;
         grid-template-columns: repeat(2,1fr);
     }
 }
-@media screen and  (max-width:440px){
+@media screen and  (max-width:470px){
     .card{
         grid-template-columns: repeat(1,1fr);
     }
