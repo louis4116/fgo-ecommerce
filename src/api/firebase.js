@@ -4,12 +4,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 const firebaseConfig = {
-  apiKey: "AIzaSyDWsedgoVaQU7lB5HRqaEdz_b5grNowiPA",
-  authDomain: "fgo-project-260c6.firebaseapp.com",
-  projectId: "fgo-project-260c6",
-  storageBucket: "fgo-project-260c6.appspot.com",
-  messagingSenderId: "276244247923",
-  appId: "1:276244247923:web:0ad3d58e0a5570dd388106"
+apiKey:process.env.REACT_APP_API_KEY,
+authDomain: process.env.REACT_APP_API_AUTH,
+projectId: process.env.REACT_APP_API_PROJECT,
+storageBucket: process.env.REACT_APP_API_STORAGE,
+messagingSenderId: process.env.REACT_APP_API_MESSAGE,
+appId: process.env.REACT_APP_API_APPID
 };
 
 // Initialize Firebase
