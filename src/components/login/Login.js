@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../util/FormSchema';
 import { useLoginSliceMutation } from '../../api/AuthSlice';
 import LoginFormInput from '../ui/loginform/LoginFormInput';
+import Swal from 'sweetalert2';
 import { LoginFormFileds } from './util';
 import classes from "./login.module.css";
 
@@ -20,14 +21,29 @@ const Login = ({onShow}) => {
       password:""
     }
   });
+  const {handleSubmit}=method;
   const submitHandler=(loginData)=>{
-      loginSlice(loginData).then(()=>navigate("/")).catch((e)=>console.log(e))
-  }
+      loginSlice(loginData)
+      .then((e)=>{
+        if(e.error){
+          throw new Error(e.error.message)
+        }else{
+          navigate("/")
+        }
+      })
+      .catch(()=>
+      Swal.fire({
+        title: "失敗!",
+        text: "登入失敗!!請確認帳號或密碼是否錯誤",
+        icon: "error",
+        confirmButtonText: "關閉",
+      }));
+  };
 
 
   return (
    <FormProvider {...method}>
-    <form className={classes.login} onSubmit={method.handleSubmit(submitHandler)}> 
+    <form className={classes.login} onSubmit={handleSubmit(submitHandler)}> 
     {LoginFormFileds.map((item)=>(<LoginFormInput 
           key={item.label} 
           label={item.label}

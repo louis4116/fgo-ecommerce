@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { signupSchema } from '../../util/FormSchema';
 import {useSignUpSliceMutation} from "../../api/AuthSlice";
 import SignupFormInput from '../ui/signupform/SignupFormInput';
+import Swal from 'sweetalert2';
 import { SignupFormFileds } from './util';
 import classes from "./signup.module.css";
 
@@ -22,8 +23,20 @@ const Signup = ({onShow}) => {
   });
   const {reset}=method;
   const onSubmitHandler=(signupData)=>{
-       signUpSlice(signupData).then(()=>reset()).then(()=>onShow()).catch((e)=>console.log(e))
-  }
+       signUpSlice(signupData)
+       .then((e)=>{
+        if(e.error){
+          throw new Error()
+        }})
+       .then(()=>reset())
+       .then(()=>onShow())
+       .catch(()=>Swal.fire({
+        title: "失敗!",
+        text: "註冊失敗!!信箱已使用或是出現不可預期的錯誤",
+        icon: "error",
+        confirmButtonText: "關閉",
+      }));
+  };
   return (
     <FormProvider {...method}>
     <form  className={classes.signup} onSubmit={method.handleSubmit(onSubmitHandler)}>

@@ -16,7 +16,6 @@ export const fgoApi=createApi({
                     fetchData.forEach(doc=>{
                         result.push(doc.data());
                     })
-                    console.log(result)
                     return {data:result}
                 }catch(e){
                     return{error:e}

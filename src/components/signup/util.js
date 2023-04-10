@@ -6,8 +6,8 @@ export const SignupFormFileds=[
         name:"使用者名稱"
     },
     {
-        label:"singupEmail",
-        id:"singupEmail",
+        label:"signupEmail",
+        id:"signupEmail",
         type:"email",
         name:"帳號"
     },

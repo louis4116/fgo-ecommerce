@@ -15,7 +15,7 @@ const Cart = ({onHide}) => {
       onHide();
   };
  
-  console.log("調用")
+
   return (
     <Modal onHide={onHide}>
       <ul className={classes.cart}>

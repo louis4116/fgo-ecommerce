@@ -35,7 +35,7 @@ const Checkout = () => {
   useEffect(()=>{
     if(!currentUser){
       swalToLogin();
-    }else if(cartItems?.length===0){
+    }else if(!cartItems){
       swalToProduct();  
     }
   
