@@ -1,6 +1,6 @@
 # fgo e-commerce
 專案網址
-https://fgo-shoppingcart.firebaseapp.com/
+https://fgo-project-260c6.firebaseapp.com/
 
 ## 流程架構圖
 ![image](https://github.com/louis4116/picuture/blob/main/%E6%9E%B6%E6%A7%8B%E5%9C%96.png)
