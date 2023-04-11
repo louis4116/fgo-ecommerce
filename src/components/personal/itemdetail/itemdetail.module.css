@@ -29,3 +29,9 @@
 .item-detail-cancel:hover{
     background-color: rgba(0,0,0,0.05);
 }
+@media screen and (max-width:750px) {
+    .item-detail-loading{
+        max-width: 70vw;
+    }
+    
+}
