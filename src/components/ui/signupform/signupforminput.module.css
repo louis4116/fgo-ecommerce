@@ -1,6 +1,6 @@
 .signup-content{
     position: relative;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bolder;
     letter-spacing: 2px;
     width: 25vw;
@@ -16,7 +16,7 @@
     outline: 0;
     font-size: 1.3rem;
     color: black;
-    padding: 3px 0;
+    padding: 7px 0;
     background: transparent;
 }
 

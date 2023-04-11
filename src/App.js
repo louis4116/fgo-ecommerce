@@ -6,7 +6,7 @@ import Cart from "./components/cart/Cart";
 import useAccountAuth from "./custom-hook/useAccountState";
 import useShow from "./custom-hook/useShow";
 import Loading from "./components/ui/loading/Loading";
-import classes from "./app.css";
+import classes from "./App.css";
 
 
 function App() {
