@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import classes from "./signupform.module.css"
+import classes from "./signupforminput.module.css"
 
 const SignupFormInput = ({label,input}) => {
     const {register ,formState: { errors }}=useFormContext();
