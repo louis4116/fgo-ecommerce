@@ -2,8 +2,7 @@
 專案網址
 https://fgo-project-260c6.firebaseapp.com/
 專案重構 以下內容尚未更新
-## 流程架構圖
-![image](https://github.com/louis4116/picuture/blob/main/%E6%9E%B6%E6%A7%8B%E5%9C%96.png)
+
 # 專案介紹 
 
 1.本次專案使用的技術主要是用redux toolkit進行商品的增減，使用hook來進行component內的變數管理和API的串接，串接的API是firebase的Realtime Database，從firebase取得商品資料以及把下單的商品送入firebase。 
