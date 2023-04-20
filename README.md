@@ -9,7 +9,6 @@ https://fgo-project-260c6.firebaseapp.com/
 # 專案使用技術(未更新) 
 1.使用lazy和suspense來處理載入問題
 
-2.
 
 # 專案歷程 (未更新) 
 
