@@ -6,7 +6,7 @@ import Form from "../../components/form/Form";
 import Swal from "sweetalert2";
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cart.itemS);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const {currentUser}=useAccountAuth();
   const navigate=useNavigate();
   
@@ -35,7 +35,8 @@ const Checkout = () => {
   useEffect(()=>{
     if(!currentUser){
       swalToLogin();
-    }else if(!cartItems){
+    }
+    if(!cartItems){
       swalToProduct();  
     }
   

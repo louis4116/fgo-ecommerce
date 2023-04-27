@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import classes from './forminput.module.css';
 const FormInput = ({label,input}) => {
   const {register ,formState: { errors }}=useFormContext();
+  console.log("UI TEST")
  //結帳表單UI
   return (
       
