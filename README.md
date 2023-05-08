@@ -7,7 +7,7 @@
 
 專案網址
 https://fgo-project-260c6.firebaseapp.com/
-
+![image](https://github.com/louis4116/picuture/blob/main/FGO%E5%95%86%E5%93%81%E5%B0%8F%E8%88%96-%E9%87%8D%E6%A7%8B.png)
 
 # 專案主要使用到的技術
 
