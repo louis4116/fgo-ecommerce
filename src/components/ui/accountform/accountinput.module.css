@@ -1,4 +1,4 @@
-.login-content{
+.account-content{
     position: relative;
     font-size: 24px;
     font-weight: bolder;
@@ -7,7 +7,7 @@
     margin-bottom: 24px;
 }
 
-.login-content-input{
+.account-content-input{
     font-family: inherit;
     width: 100%;
     border: 0;
@@ -19,16 +19,16 @@
     background: transparent;
 }
 
-.login-content-input::placeholder{
+.account-content-input::placeholder{
     color: transparent;
 }
-.login-content-input:placeholder-shown~ label{
+.account-content-input:placeholder-shown~ label{
     font-size: 1.3rem;
     cursor: text;
     top: 0;
     color: black;
 }
-.login-content-label{
+.account-content-label{
     position: absolute;
     color:gray;
     width: 100%;
@@ -39,7 +39,7 @@
     pointer-events:none;
    
 }
-.login-content input:focus ~ label{
+.account-content input:focus ~ label{
     top:-20px;
     font-size: 1rem;
     color: gray;

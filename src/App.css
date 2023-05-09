@@ -22,11 +22,11 @@ html{
 body::-webkit-scrollbar {
     display: none;
 }
- .swiper-button-next,
+.swiper-button-next,
 .swiper-button-prev{
    background-color: rgba(55,55,55,0.75) !important;
-   color: white;
-   padding: 20px 15px;
+   color: white !important;
+   padding: 20px 15px !important;
 } 
 .swiper-pagination-bullet-active {
 background-color: white !important;

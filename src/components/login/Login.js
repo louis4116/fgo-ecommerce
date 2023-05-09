@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../util/FormSchema';
 import { useLoginSliceMutation } from '../../api/AuthSlice';
-import LoginFormInput from '../ui/loginform/LoginFormInput';
+// import LoginFormInput from '../ui/loginform/LoginFormInput';
+// import SignupFormInput from '../ui/signupform/SignupFormInput';
+import AccountInput from '../ui/accountform/AccountInput';
 import Swal from 'sweetalert2';
 import { LoginFormFileds } from './util';
 import classes from "./login.module.css";
@@ -44,7 +46,7 @@ const Login = ({onShow}) => {
   return (
    <FormProvider {...method}>
     <form className={classes.login} onSubmit={handleSubmit(submitHandler)}> 
-    {LoginFormFileds.map((item)=>(<LoginFormInput 
+    {LoginFormFileds.map((item)=>(<AccountInput
           key={item.label} 
           label={item.label}
           input={{id:item.id,type:item.type,placeholder:item.name}}/>))}
