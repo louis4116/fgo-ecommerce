@@ -1,4 +1,4 @@
-import React,{useRef,useEffect} from "react";
+import React,{useRef,useEffect,useState} from "react";
 import { Link,useNavigate, useLocation } from "react-router-dom";
 import { AccountBox,PersonOutlined,LoginOutlined } from "@mui/icons-material";
 import { signOut } from "firebase/auth";
@@ -11,6 +11,7 @@ import classes from "./header.module.css";
 
 const Header = ({onShow}) => {
   const [show,setShow]=useShow(false);
+  const [nowPhoto,setNowPhoto]=useState("https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png");
   const menuRef=useRef();
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +33,13 @@ const Header = ({onShow}) => {
       document.removeEventListener("mousedown",handler)
     }
   },[show])
+  
+  useEffect(()=>{
+      if(currentUser?.photoURL){
+        setNowPhoto(currentUser?.photoURL)
+      }
+  },[currentUser?.photoURL,nowPhoto])
+
   //未登入
   const notLoginNav=(
     <span className={classes.accountNav}>
@@ -51,7 +59,7 @@ const Header = ({onShow}) => {
       </span>
     ) 
     const loginImg=(
-      <img className={classes.loginImg}  src={currentUser?.photoURL} onClick={setShow}/>
+      <img className={classes.loginImg}  src={nowPhoto} onClick={setShow}/>
     )
     const notLoginImg=(
       <AccountBox style={{ fontSize:"2.5rem" ,cursor:"pointer",marginRight:"10px"}}  onClick={setShow}/>

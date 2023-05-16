@@ -50,6 +50,7 @@ const Form = () => {
   const submitHandler =useCallback( 
     //使用debounce不讓資訊連續傳送到後台 
     debounce( async (value) => {
+      console.log("debounce test")
         const { firstName, secondName, email, phoneNumber, street } = value;
         const memo = memoRef.current.value;
         const data = {
@@ -85,7 +86,7 @@ const Form = () => {
           })
         )
         .then(() => navigation("/"))
-        .catch((err) =>  Swal.fire({
+        .catch(() =>  Swal.fire({
           title: "錯誤!!",
           text: "關閉提示窗將會跳轉至首頁。。。",
           icon: "error",

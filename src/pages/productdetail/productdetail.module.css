@@ -6,3 +6,10 @@
     background-color: white;
     padding: 0px 2rem;
 }
+.productdetail-loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    background-color: transparent;
+}

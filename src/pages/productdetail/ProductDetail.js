@@ -5,6 +5,7 @@ import FgoInformation from "../../components/information/FgoInformation";
 import Loading from "../../components/ui/loading/Loading";
 import classes from "./productdetail.module.css"
 
+
 const ProductDetail = () => {
   const [firebaseData, setFirebaseData] = useState([]);
   const params = useParams();
@@ -14,15 +15,15 @@ const ProductDetail = () => {
 
   //判斷特定商品的編號，以顯示該商品的詳細訊息
   useEffect(()=>{
-    const check=data?.find((item)=>item.id===params.id)
-    if(check){
-      const fetchDetail= data?.filter((item)=>item.id===params.id);
-      setFirebaseData(fetchDetail)
-    }else{
-       navigate("*")
-    }
-  },[params.id,isLoading])
- 
+    const check=data?.find((item)=>item.id===params.id);
+      if(check||isLoading){
+        const fetchDetail= data?.filter((item)=>item.id===params.id);
+        setFirebaseData(fetchDetail)
+      }else{
+         navigate("*")
+      }
+  },[data,params.id,isLoading])
+
 
   const fgoData = firebaseData?.map((item) => (
     <FgoInformation
@@ -42,7 +43,11 @@ const ProductDetail = () => {
     />
   ));
 
-  const result=isLoading ? <Loading /> :fgoData;
+  const result=isLoading ?(
+    <div className={classes["productdetail-loading"]}>
+     <Loading />
+     </div>
+     ) :(fgoData);
 
   return (
     <div className={classes.page}>

@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { useOutletContext ,useParams,useNavigate} from 'react-router-dom';
 import { useFetchItemDetailDataQuery,useDeleteDataMutation } from '../../../api/DataSlice';
-import useShow from '../../../custom-hook/useShow';
 import { DeleteOutline } from '@mui/icons-material';
 import OrderItems from './orderitems/OrderItems';
 import User from './user/User';
@@ -16,6 +15,7 @@ const ItemDetail = () => {
     const [deleteData]=useDeleteDataMutation();
     const navigate=useNavigate();
     const userDetail=data?.user;
+    console.log(data)
     //判斷資料存在與否
     useEffect(()=>{
       let result=0;

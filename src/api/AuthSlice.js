@@ -11,7 +11,7 @@ export const authApi=createApi({
             async queryFn(data){
                 try{
                     const {userName,signupEmail,signupPassword}=data;
-                    console.log(data)
+                    
                     const {user}=await createUserWithEmailAndPassword(auth,signupEmail,signupPassword);
                     await  updateProfile(user,{
                         displayName:userName

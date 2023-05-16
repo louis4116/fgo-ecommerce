@@ -10,7 +10,7 @@ const PersonalINF = () => {
   const {currentUser:currentUser,profilePhoto:[setProfilePhoto],profileName:[setProfileName]}=useOutletContext();
   const [updatedProfile]=useUpdatedProfileMutation();
   const [sendEmailVerified]=useSendEmailVerifiedMutation();
-  const {register,handleSubmit,reset,watch,formState:{errors}}=useForm();
+  const {register,handleSubmit,formState:{errors}}=useForm();
   const email=currentUser?.email;
   const defaultName=currentUser?.displayName;
   const emailVerified=currentUser?.emailVerified;
@@ -26,6 +26,7 @@ const PersonalINF = () => {
       });
       //轉換成網頁能讀懂的形式
       reader.readAsDataURL(e.target.files[0]);
+      
     }
   };
 
@@ -44,6 +45,7 @@ const PersonalINF = () => {
      //0是照片位置，1是暱稱位置
      setProfilePhoto(returnData.data[0]);
      setProfileName(returnData.data[1]);
+     alert("偵測到頭像變更，請重新整理")
     }catch(e){
       console.log(e)
     }

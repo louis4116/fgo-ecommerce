@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../../util/FormSchema';
 import { useLoginSliceMutation } from '../../api/AuthSlice';
-// import LoginFormInput from '../ui/loginform/LoginFormInput';
-// import SignupFormInput from '../ui/signupform/SignupFormInput';
 import AccountInput from '../ui/accountform/AccountInput';
 import Swal from 'sweetalert2';
 import { LoginFormFileds } from './util';

@@ -16,7 +16,6 @@ const Personalpage = () => {
   const photo=currentUser?.photoURL;
   const name=currentUser?.displayName;
   const {data}=useFetchUserDataQuery(uid,{skip:!uid});
- console.log(data)
   //修改暱稱和圖片，並及時放進state讓畫面更新
   useEffect(()=>{
     if(photo){
