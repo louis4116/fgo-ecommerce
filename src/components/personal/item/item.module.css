@@ -9,7 +9,7 @@
 }
 .item-bottom{
     padding: 5px 0px;
-    border-bottom: 1px dotted rgba(0,0,0,0.5);
+    border-bottom: 1px dotted var(--border);
 }
 
 .item-name{
@@ -38,7 +38,7 @@ padding-right: 12px;
 .item-all-detail{
     text-align: center;
     cursor: pointer;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border);
     margin-bottom: 10px;
 }
 

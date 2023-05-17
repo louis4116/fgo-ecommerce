@@ -13,6 +13,7 @@
    display:flex;
    justify-content: center;
    align-items: center;
+   color: var(--text-color);
    width: 2.35em;  
 }
 
@@ -57,8 +58,3 @@
       transform: scale(1);
     }
   }
-/*
-.header-button-number:hover,
-.header-button-number:active{
-    background-color:rgba(8, 57, 75, 0.5);
-} */

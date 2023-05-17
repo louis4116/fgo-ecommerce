@@ -1,11 +1,12 @@
 .container{
-    width: 100%;
     display: flex;
+    justify-content: center;
+    max-width: var(--pagewidth);
     
 }
 .navbar{
-    margin-top: 13rem;
     width: 17rem;
+    margin-top: 5rem;
 }
 .item{
     display: flex;
@@ -22,6 +23,7 @@
 }
 .profile h3{
     display: inline-block;
+    color: var(--text-color);
     font-size: 3rem;
     vertical-align: middle;
 }
@@ -42,11 +44,11 @@
     align-items: center;
 }
 
-.outlet{
-    margin:7rem 0 0 3rem;
-}
+
 .outlet-container{
-    background-color: white;
+    background-color: var(--background);
+    color: var(--text-color);
+    box-shadow: 0 0 15px var(--border);
     width: 45rem;
     padding: 10px 20px;
     margin-top: 3rem;
@@ -57,11 +59,13 @@
     background-color: transparent;
 }
 .link-active{
-    color: rgb(54, 53, 53);
+    color: var(--text-color);
+    border-bottom: 3px solid var(--border);
     text-decoration: none;
 }
 .link-inactive{
-    color: rgb(139, 135, 135);
+    color: var(--text-color);
+    border-bottom: var(--border);
     text-decoration: none;
 }
 @media screen and (max-width:1050px) {

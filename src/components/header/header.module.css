@@ -1,6 +1,7 @@
 .header{
-    position: fixed;
-    background-color: rgba(255,255,255);
+    position: sticky;
+    background-color: var(--background);
+    color: var(--text-color);
     width: 100%;
     top: 0;
     left: 0;
@@ -8,8 +9,7 @@
     height: 4rem;
     display: flex;
     align-items: center;
-    
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 8px var(--text-color);
     z-index: 5;
 }
 .header h1{
@@ -38,33 +38,46 @@
     width: 100px;
     height: 70px;
     left: calc((-50% - 40px) /2);
-    background-color: white;
+    background-color: var(--background);
+
     border-radius: 10px;
-    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 5px 10px var(--border);
 }
 
 .accountNav{
       display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
-.accountNav ul{
-     width: 100%;
-     display: flex;
-    list-style-type: none;
-    padding: 5px ;
-}
-.accountNav ul li{
+.accountNav-login,
+.accountNav-signup{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-   
+   list-style-type: none;
+   padding: 5px ;
+}
+.accountNav-login li{
+    display: flex;
+    justify-content: center;
+}
+.accountNav-signup{
+    flex-direction: column;
+}
+.accountNav-signup ul{
+    display: flex;
+    
+}
+.accountNav-signup ul li{
+    display: flex;
+    list-style-type: none;
 }
 .accountBox{
    font-size: 50px;
 }
 
 .active{
-    color: black;
+    color: var(--text-color);
     text-decoration:none;
 }
 .loginImg{
@@ -73,6 +86,12 @@
     border-radius: 5px;
     cursor:pointer;
     margin-right:10px;
+}
+
+.theme{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width:420px) {

@@ -1,7 +1,7 @@
 .account{
  height: 100vh;
  display: flex;
- background-color: #dcdcdc;
+
  position: relative;
  justify-content: center;
  align-items: center;

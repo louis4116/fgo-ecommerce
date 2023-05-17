@@ -1,29 +1,26 @@
-import React,{useEffect,useState} from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useFetchDataQuery } from "../../api/DataSlice";
 import FgoInformation from "../../components/information/FgoInformation";
 import Loading from "../../components/ui/loading/Loading";
-import classes from "./productdetail.module.css"
+import classes from "./productdetail.module.css";
 
-
-const ProductDetail = () => {
+const ProductDetail = ({ switchTheme }) => {
   const [firebaseData, setFirebaseData] = useState([]);
   const params = useParams();
-  const navigate=useNavigate()
- 
-  const {data,isLoading}=useFetchDataQuery();
+  const navigate = useNavigate();
+  const { data, isLoading } = useFetchDataQuery();
 
   //判斷特定商品的編號，以顯示該商品的詳細訊息
-  useEffect(()=>{
-    const check=data?.find((item)=>item.id===params.id);
-      if(check||isLoading){
-        const fetchDetail= data?.filter((item)=>item.id===params.id);
-        setFirebaseData(fetchDetail)
-      }else{
-         navigate("*")
-      }
-  },[data,params.id,isLoading])
-
+  useEffect(() => {
+    const check = data?.find((item) => item.id === params.id);
+    if (check || isLoading) {
+      const fetchDetail = data?.filter((item) => item.id === params.id);
+      setFirebaseData(fetchDetail);
+    } else {
+      navigate("*");
+    }
+  }, [data, params.id, isLoading]);
 
   const fgoData = firebaseData?.map((item) => (
     <FgoInformation
@@ -43,16 +40,17 @@ const ProductDetail = () => {
     />
   ));
 
-  const result=isLoading ?(
+  const result = isLoading ? (
     <div className={classes["productdetail-loading"]}>
-     <Loading />
-     </div>
-     ) :(fgoData);
+      <Loading />
+    </div>
+  ) : (
+    fgoData
+  );
 
   return (
     <div className={classes.page}>
-      {result}
-  
+      <div className={classes["page-detail"]}>{result}</div>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const MainItem = ({ id, price, img, title }) => {
   };
 
   return (
-    <div className={classes.test}>
+    <div className={classes["mainItem-container"]}>
       <div
         data-testid="mainItem"
         className={classes.mainItem}

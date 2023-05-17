@@ -5,17 +5,32 @@
     box-sizing: border-box;
    
 }
-:root{
-    --swiper-navigation-size:20px;
-    
-}
 body,
 html{
   height: 100%;
-  max-width: 1200px;
-  margin: auto;
-  background-color:#dcdcdc;
+  background-color: var(--background); 
 }
+:root{
+    --swiper-navigation-size:20px;
+    --background:#F5F5F5;
+    --text-color:#121212;
+    --border:#333;
+    --form:#FFFFFF;
+    --button:#8e05c2;
+    --switch:#42509e;
+    
+}
+[data-theme="dark"]{
+  --background:#121212;
+  --text-color:#F5F5F5;
+  --border:#808080;
+  --form:#191919;
+  --button:#8e05c2;  
+  --switch:#6877ce;
+}
+
+
+
 .loading{
  margin-top: 14rem;
 }

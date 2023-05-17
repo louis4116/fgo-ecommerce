@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { FaShoppingCart } from "react-icons/fa";
 import CartIcon from "./Icon";
 import classes from "./headerbutton.module.css";
 
-const HeaderButton = ({onShow}) => {
+const HeaderButton = ({ onShow }) => {
   const [bump, setBump] = useState(false);
   const totalNumber = useSelector((state) => state.cart.totalNumber);
   const HBclass = `${
@@ -27,7 +28,7 @@ const HeaderButton = ({onShow}) => {
   return (
     <div className={classes["header-button"]} onClick={onShow}>
       <span className={classes["header-button-icon"]}>
-        <CartIcon />
+        <FaShoppingCart fontSize={32} />
       </span>
       <span className={HBclass}>{totalNumber}</span>
     </div>

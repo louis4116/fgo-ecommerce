@@ -1,7 +1,5 @@
-
 .summary-item{
-    display: flex;
-    
+    display: flex;    
 }
 .summary-item-first{
     display: flex;
@@ -42,9 +40,10 @@
     border-radius: 10px;
     width:3rem;
     margin: 1px 3px;
-    background-color: transparent;
-    border: 2px solid #ccc;
+    background-color: var(--background);
+    border: 2px solid var(--border);
     cursor: pointer;
+    color: var(--text-color);
     font-weight: bold;
 }
 .summary-item-button button:hover{

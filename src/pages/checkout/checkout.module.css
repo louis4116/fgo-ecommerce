@@ -1,0 +1,11 @@
+.checkoutPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checkoutContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+}

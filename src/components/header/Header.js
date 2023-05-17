@@ -1,69 +1,110 @@
-import React,{useRef,useEffect,useState} from "react";
-import { Link,useNavigate, useLocation } from "react-router-dom";
-import { AccountBox,PersonOutlined,LoginOutlined } from "@mui/icons-material";
+import React, { useRef, useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+  AccountBox,
+  PersonOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+} from "@mui/icons-material";
 import { signOut } from "firebase/auth";
 import { auth } from "../../api/firebase";
-import { LogoutOutlined } from "@mui/icons-material";
 import useShow from "../../custom-hook/useShow";
 import useAccountAuth from "../../custom-hook/useAccountState";
 import HeaderButton from "./HeaderButton";
+import SwitchDarkMode from "../ui/darkmode/SwitchDarkMode";
 import classes from "./header.module.css";
 
-const Header = ({onShow}) => {
-  const [show,setShow]=useShow(false);
-  const [nowPhoto,setNowPhoto]=useState("https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png");
-  const menuRef=useRef();
+const Header = ({ onShow, switchTheme, darkMode }) => {
+  const [show, setShow] = useShow(false);
+  const [nowPhoto, setNowPhoto] = useState(
+    "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+  );
+  const menuRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const {currentUser}=useAccountAuth();
+  const { currentUser } = useAccountAuth();
   const isChekoutPage = location.pathname === "/checkout";
   const isLoginPage = location.pathname === "/login";
-  const signOutHandler=()=>{
-    signOut(auth).then(()=>navigate("/")).catch((e)=>console.log(e))
-  }
+  const signOutHandler = () => {
+    signOut(auth)
+      .then(() => navigate("/"))
+      .then(() => window.location.reload())
+      .catch((e) => console.log(e));
+  };
   //判斷點擊個人頭像時，是否會跳出來個人資訊的連結
-  useEffect(()=>{
-    const handler=(e)=>{
-      if(!menuRef.current.contains(e.target)){
+  useEffect(() => {
+    const handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
         setShow(false);
       }
     };
-    document.addEventListener("mousedown",handler);
-    return ()=>{
-      document.removeEventListener("mousedown",handler)
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [show]);
+
+  useEffect(() => {
+    if (currentUser?.photoURL) {
+      setNowPhoto(currentUser?.photoURL);
     }
-  },[show])
-  
-  useEffect(()=>{
-      if(currentUser?.photoURL){
-        setNowPhoto(currentUser?.photoURL)
-      }
-  },[currentUser?.photoURL,nowPhoto])
+  }, [currentUser?.photoURL, nowPhoto]);
 
   //未登入
-  const notLoginNav=(
+  const notLoginNav = (
     <span className={classes.accountNav}>
+      <ul className={classes["accountNav-login"]}>
+        <li>
+          <LoginOutlined />
+        </li>
+        <li
+          style={{
+            flex: "1",
+          }}
+        >
+          <Link className={classes.active} onClick={setShow} to="/login">
+            登入
+          </Link>
+        </li>
+      </ul>
+    </span>
+  );
+  //已登入
+  const loginNav = (
+    <span className={classes.accountNav}>
+      <div className={classes["accountNav-signup"]}>
         <ul>
-          <li><LoginOutlined /></li><li><Link className={classes.active} onClick={setShow}  to="/login">登入</Link></li>
+          <li>
+            <PersonOutlined />
+          </li>
+          <li>
+            <Link className={classes.active} onClick={setShow} to="/personal">
+              個人資訊
+            </Link>
+          </li>
         </ul>
-      </span>);
-      //已登入      
-    const loginNav=(
-      <span className={classes.accountNav}>
-       <ul>
-        <li><PersonOutlined /></li><li><Link className={classes.active} onClick={setShow}  to="/personal">個人資訊</Link></li>
-       </ul>
-       <ul>
-        <li><LogoutOutlined /></li><li><Link className={classes.active} onClick={signOutHandler}>登出</Link></li>
-       </ul>
-      </span>
-    ) 
-    const loginImg=(
-      <img className={classes.loginImg}  src={nowPhoto} onClick={setShow}/>
-    )
-    const notLoginImg=(
-      <AccountBox style={{ fontSize:"2.5rem" ,cursor:"pointer",marginRight:"10px"}}  onClick={setShow}/>
-    )
+        <ul>
+          <li>
+            <LogoutOutlined />
+          </li>
+          <li>
+            <Link className={classes.active} onClick={signOutHandler}>
+              登出
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </span>
+  );
+  const loginImg = (
+    <img className={classes.loginImg} src={nowPhoto} onClick={setShow} />
+  );
+  const notLoginImg = (
+    <AccountBox
+      style={{ fontSize: "2.5rem", cursor: "pointer", marginRight: "10px" }}
+      onClick={setShow}
+    />
+  );
   return (
     <>
       <header className={classes.header}>
@@ -78,11 +119,18 @@ const Header = ({onShow}) => {
           FGO商品小舖
         </h1>
         <span className={classes.navbar}>
-        <span className={classes.dropDown} ref={menuRef}>
-        {currentUser?loginImg:notLoginImg}
-        {show&&<div className={classes.dropDownMenu}>{!currentUser&&!isChekoutPage?notLoginNav :loginNav}</div>}
-        </span>
-        {!isChekoutPage && !isLoginPage && <HeaderButton onShow={onShow} />}
+          <span className={classes.theme} onClick={switchTheme}>
+            <SwitchDarkMode switchTheme={switchTheme} darkMode={darkMode} />
+          </span>
+          <span className={classes.dropDown} ref={menuRef}>
+            {currentUser ? loginImg : notLoginImg}
+            {show && (
+              <div className={classes.dropDownMenu}>
+                {!currentUser && !isChekoutPage ? notLoginNav : loginNav}
+              </div>
+            )}
+          </span>
+          {!isChekoutPage && !isLoginPage && <HeaderButton onShow={onShow} />}
         </span>
       </header>
     </>

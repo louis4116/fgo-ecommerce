@@ -2,7 +2,7 @@
 
 .personal-item-h2{
     padding: 15px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border);
     margin-bottom: 1rem;
 }
 .personal-item-h3{
@@ -15,7 +15,7 @@
 }
 
 .pagination{
-    color: black;
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,13 +28,13 @@
 .pagination,
 .page-num{
     padding: 8px 15px;
-    color: black;
+    color: var(--text-color);
     border-radius: 3px;
     font-weight: 400;
     
 }
 .page-num a{
-    color: black;
+    color: var(--text-color);
 }
 .page-num{
     cursor: pointer;

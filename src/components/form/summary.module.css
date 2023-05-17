@@ -4,9 +4,9 @@
     align-items: center;
     padding: 15px 10px;
     flex-direction: column;
-    border-color: black;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    background-color: var(--background);
+    box-shadow: 0 0 20px var(--border);
+    color: var(--text-color);
     height: 27em;
     margin-left: 10px;
 } 
@@ -24,7 +24,7 @@
    flex-direction: column;
    margin-bottom: 2rem;
    height: 100%;
-   border-color: black;
+   border-color: var(--border);
    border-bottom-width: 1px;
    border-bottom-style: solid;
    padding: 5px 0px;
@@ -42,9 +42,10 @@
     font-size: 25px;
     width:7em;
     margin: 1px 3px;
-    background-color: transparent;
-    border: 2px solid #ccc;
+    background-color: var(--background);
+    border: 2px solid var(--border);
     cursor: pointer;
+    color: var(--text-color);
     font-weight: bold;
 }
 

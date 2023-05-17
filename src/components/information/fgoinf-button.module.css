@@ -23,17 +23,16 @@
 }
 .fgo-InF-content-button{
     padding: 10px 20px;
-    background-color: black;
+    background-color: var(--background);
     margin-left: 12rem;
     font-size: 1rem;
     font-weight: 500;
-    color: white; 
+    color: var(--text-color); 
     cursor: pointer;
     width: 150px;
+    box-shadow: 0 0 10px var(--border);
 }
-.fgo-InF-content-button:hover{
-    background-color: rgba(0,0,0,0.75);
-}
+
 
 
 

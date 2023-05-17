@@ -1,18 +1,21 @@
-.test{
+.mainItem-container{
     display: flex;
     justify-content: center;
      align-items: center;
      flex-direction: column;
     margin-top: 1rem;
+
 }
 .mainItem{
    
     border-radius:5px ;
     border-color: black;
+    background-color: var(--background);
+    color:var(--text-color);
     width: 200px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 8px var(--border);
     text-align: center;
     transform:  translateY(0);
     transition-duration:0.3s;
@@ -32,7 +35,7 @@
 
 .mainItem:hover{
     transform:translateY(-2px);
-    box-shadow: 0 0 5px 2px rgba(0,0,0,.5);
+    box-shadow: 0 0 5px 2px var(--border);
      
 }
 .mainItem-button{
