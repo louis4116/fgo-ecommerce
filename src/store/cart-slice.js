@@ -6,13 +6,14 @@ const totalNumber = JSON.parse(localStorage.getItem("totalNumber")) || 0;
 
 const initialState = { cartItems: cartItems, totalNumber: totalNumber };
 
-
 //將購物車資訊存入localstorage
-const updatedLocalstorage=(cartItems,totalNumber)=>{
-      localStorage.setItem("cartItems",JSON.stringify(cartItems.map((item) => item)));
-      localStorage.setItem("totalNumber", JSON.stringify(totalNumber));
+const updatedLocalstorage = (cartItems, totalNumber) => {
+  localStorage.setItem(
+    "cartItems",
+    JSON.stringify(cartItems.map((item) => item))
+  );
+  localStorage.setItem("totalNumber", JSON.stringify(totalNumber));
 };
-
 
 //購物車邏輯
 const cartSlice = createSlice({
@@ -25,7 +26,9 @@ const cartSlice = createSlice({
       if (newItem.quantity === 0) {
         return;
       }
-      const existingItem = state.cartItems.find((item) => item.id === newItem.id);
+      const existingItem = state.cartItems.find(
+        (item) => item.id === newItem.id
+      );
       state.totalNumber += newItem.quantity;
       let temp;
       //如果沒有商品，就先將商品的資訊加入
@@ -34,7 +37,7 @@ const cartSlice = createSlice({
           id: newItem.id,
           price: newItem.price,
           number: newItem.number,
-          allPrice: newItem.price,//同種商品的總金額
+          allPrice: newItem.price, //同種商品的總金額
           name: newItem.title,
           img: newItem.img,
         });
@@ -48,12 +51,14 @@ const cartSlice = createSlice({
         existingItem.allPrice += existingItem.price * newItem.quantity;
       }
       //存入localstorag
-      updatedLocalstorage(state.cartItems,state.totalNumber);
+      updatedLocalstorage(state.cartItems, state.totalNumber);
     },
     //購物車內增加商品，只會有加一減一的狀況
     addItemToCart(state, action) {
       const newItem = action.payload;
-      const existingItem = state.cartItems.find((item) => item.id === newItem.id);
+      const existingItem = state.cartItems.find(
+        (item) => item.id === newItem.id
+      );
       state.totalNumber++;
       if (!existingItem) {
         state.cartItems.push({
@@ -66,9 +71,9 @@ const cartSlice = createSlice({
         });
       } else {
         existingItem.number++;
-        existingItem.allPrice +=  existingItem.price;
+        existingItem.allPrice += existingItem.price;
       }
-      updatedLocalstorage(state.cartItems,state.totalNumber);
+      updatedLocalstorage(state.cartItems, state.totalNumber);
     },
     //從購物車內部去掉單一或全部商品
     removeItemToCart(state, action) {
@@ -76,12 +81,12 @@ const cartSlice = createSlice({
       const existingItem = state.cartItems.find((item) => item.id === oldItem);
       state.totalNumber--;
       if (existingItem.number === 1) {
-        state.cartItems = state.cartItems.filter((item) => item.id !== oldItem);//如果商品只剩一個，那就會去掉該商品項目
+        state.cartItems = state.cartItems.filter((item) => item.id !== oldItem); //如果商品只剩一個，那就會去掉該商品項目
       } else {
         existingItem.number--;
         existingItem.allPrice = existingItem.number * existingItem.price;
       }
-      updatedLocalstorage(state.cartItems,state.totalNumber);
+      updatedLocalstorage(state.cartItems, state.totalNumber);
     },
     //直接去掉全部商品
     removeAllItem(state, action) {
@@ -89,19 +94,17 @@ const cartSlice = createSlice({
       const existingItem = state.cartItems.find((item) => item.id === oldItem);
       state.cartItems = state.cartItems.filter((item) => item.id !== oldItem);
       state.totalNumber = state.totalNumber - existingItem.number;
-      updatedLocalstorage(state.cartItems,state.totalNumber);
+      updatedLocalstorage(state.cartItems, state.totalNumber);
     },
     //結帳完後去掉購物車內的商品
     clearItem(state, action) {
-      state.cartItems=[];
-      state.totalNumber=0;
+      state.cartItems = [];
+      state.totalNumber = 0;
       //從localstorage刪除
       localStorage.removeItem("cartItems");
       localStorage.removeItem("totalNumber");
     },
-    
   },
-
 });
 
 export const cartActions = cartSlice.actions;

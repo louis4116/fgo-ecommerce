@@ -27,8 +27,10 @@ const Header = ({ onShow, switchTheme, darkMode }) => {
   const isLoginPage = location.pathname === "/login";
   const signOutHandler = () => {
     signOut(auth)
-      .then(() => navigate("/"))
-      .then(() => window.location.reload())
+      .then(() => {
+        navigate("/");
+        window.location.reload();
+      })
       .catch((e) => console.log(e));
   };
   //判斷點擊個人頭像時，是否會跳出來個人資訊的連結

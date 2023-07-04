@@ -5,7 +5,7 @@ import FgoInformation from "../../components/information/FgoInformation";
 import Loading from "../../components/ui/loading/Loading";
 import classes from "./productdetail.module.css";
 
-const ProductDetail = ({ switchTheme }) => {
+const ProductDetail = () => {
   const [firebaseData, setFirebaseData] = useState([]);
   const params = useParams();
   const navigate = useNavigate();

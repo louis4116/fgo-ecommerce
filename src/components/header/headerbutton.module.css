@@ -17,8 +17,9 @@
    width: 2.35em;  
 }
 
- .header-button-number{
-    
+ .header-button-number,
+ .header-button-number-bump{
+    top: -5px;
     left: 27px;
     background-color: red;
     color: white;
@@ -30,15 +31,6 @@
     
 }
 .header-button-number-bump{
-
-    left: 27px;
-    background-color: red;
-    color: white;
-    border-radius: 100%;
-    position: absolute;
-    font-size: 14px;
-    padding: 2px 6px;
-    text-align: center;
     animation: bump 300ms ease-out;
 }
 @keyframes bump {

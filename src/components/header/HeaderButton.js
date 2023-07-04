@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
-import CartIcon from "./Icon";
 import classes from "./headerbutton.module.css";
 
 const HeaderButton = ({ onShow }) => {

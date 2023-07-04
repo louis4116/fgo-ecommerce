@@ -1,6 +1,5 @@
 import { lazy } from "react";
 const Product = lazy(() => import("../pages/product/Product"));
-const Home = lazy(() => import("../pages/home/Home"));
 const Checkout = lazy(() => import("../pages/checkout/Checkout"));
 const ProductDetail = lazy(() =>
   import("../pages/productdetail/ProductDetail")
@@ -22,10 +21,6 @@ export const productRoutes = (currentUser) => [
   {
     path: "/",
     element: <Product />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
   },
   {
     path: "products/:id",
