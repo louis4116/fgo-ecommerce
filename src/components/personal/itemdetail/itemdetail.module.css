@@ -1,7 +1,7 @@
 
 .h2{
     padding: 15px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border);
     margin-bottom: 1rem;
 }
 .item-detail-loading{
@@ -21,13 +21,14 @@
     align-items: center;
     width: 10rem;
     background-color: transparent;
+    color: var(--text-color);
     border: 1px solid rgba(155,155,155,0.75);
     border-radius: 15px;
     padding: 10px;
     cursor: pointer;
 }
 .item-detail-cancel:hover{
-    background-color: rgba(0,0,0,0.05);
+    background-color: var(--hover);
 }
 @media screen and (max-width:750px) {
     .item-detail-loading{

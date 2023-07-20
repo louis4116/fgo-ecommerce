@@ -108,34 +108,32 @@ const Header = ({ onShow, switchTheme, darkMode }) => {
     />
   );
   return (
-    <>
-      <header className={classes.header}>
-        <h1>
-          <img
-            src={require("../../img/fgo-icon.jpg")}
-            onClick={() => {
-              navigate("/");
-            }}
-            alt="icon"
-          />
-          FGO商品小舖
-        </h1>
-        <span className={classes.navbar}>
-          <span className={classes.theme} onClick={switchTheme}>
-            <SwitchDarkMode switchTheme={switchTheme} darkMode={darkMode} />
-          </span>
-          <span className={classes.dropDown} ref={menuRef}>
-            {currentUser ? loginImg : notLoginImg}
-            {show && (
-              <div className={classes.dropDownMenu}>
-                {!currentUser && !isChekoutPage ? notLoginNav : loginNav}
-              </div>
-            )}
-          </span>
-          {!isChekoutPage && !isLoginPage && <HeaderButton onShow={onShow} />}
+    <header className={classes.header}>
+      <h1>
+        <img
+          src={require("../../img/fgo-icon.jpg")}
+          onClick={() => {
+            navigate("/");
+          }}
+          alt="icon"
+        />
+        FGO商品小舖
+      </h1>
+      <span className={classes.navbar}>
+        <span className={classes.theme} onClick={switchTheme}>
+          <SwitchDarkMode darkMode={darkMode} />
         </span>
-      </header>
-    </>
+        <span className={classes.dropDown} ref={menuRef}>
+          {currentUser ? loginImg : notLoginImg}
+          {show && (
+            <div className={classes.dropDownMenu}>
+              {!currentUser && !isChekoutPage ? notLoginNav : loginNav}
+            </div>
+          )}
+        </span>
+        {!isChekoutPage && !isLoginPage && <HeaderButton onShow={onShow} />}
+      </span>
+    </header>
   );
 };
 

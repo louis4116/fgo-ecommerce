@@ -4,11 +4,9 @@
     justify-content: space-between;
     margin-top: 1rem;
 }
-.consignee-detail{
-    overflow: scroll;
-}
+
 .consignee-detail div{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border);
 }
 
 .consignee-price div{

@@ -4,12 +4,8 @@ import { cartActions } from "../../store/cart-slice";
 
 import classes from "./fgoinf-button.module.css";
 const FgoInfButton = ({ id, price, title, img, number }) => {
- 
-
-  const dispatch = useDispatch();
-
   const [quantity, setQuantity] = useState(0);
-
+  const dispatch = useDispatch();
   const minusHandler = () => {
     if (quantity === 0) {
       return;

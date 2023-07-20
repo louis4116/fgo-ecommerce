@@ -5,12 +5,11 @@ import {
   useUpdatedProfileMutation,
   useSendEmailVerifiedMutation,
 } from "../../../api/AuthSlice";
+import ProfileImg from "../../../img/Profile.jpg";
 import classes from "./personalinf.module.css";
 const PersonalINF = () => {
   const [photo, setPhoto] = useState();
-  const [nowphoto, setNowPhoto] = useState(
-    "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-  );
+  const [nowPhoto, setNowPhoto] = useState(ProfileImg);
   const imgRef = useRef();
   const {
     currentUser: currentUser,
@@ -43,17 +42,19 @@ const PersonalINF = () => {
 
   const submitHandler = async (data) => {
     const { changedName } = data;
-    const image = photo;
+    if (changedName === "") return alert("請輸入名字");
+    if (nowPhoto === ProfileImg) return alert("請更改大頭貼");
     let result;
     //暱稱更改與否的後續行動
     if (changedName === defaultName) {
-      result = { currentUser, image, name: defaultName };
+      result = { currentUser, photo, name: defaultName };
     } else if (changedName !== defaultName) {
-      result = { currentUser, image, name: changedName };
+      result = { currentUser, photo, name: changedName };
     }
     try {
       const returnData = await updatedProfile(result);
       //0是照片位置，1是暱稱位置
+      console.log(returnData);
       setProfilePhoto(returnData.data[0]);
       setProfileName(returnData.data[1]);
       alert("偵測到資料變更，請重新整理");
@@ -109,7 +110,7 @@ const PersonalINF = () => {
             </tbody>
           </table>
           <div className={classes["personalInf-img"]}>
-            <img src={nowphoto} />
+            <img src={nowPhoto} />
             <label htmlFor={classes.file} className={classes.file}>
               上傳
             </label>

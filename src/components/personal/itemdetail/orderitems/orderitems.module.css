@@ -20,7 +20,7 @@
 }
 .orderitems-bottom{
     padding: 5px 0px;
-    border-bottom: 1px dotted rgba(0,0,0,0.5);
+    border-bottom: 1px dotted var(--border);
 }
 
 @media screen and (max-width:450px) {

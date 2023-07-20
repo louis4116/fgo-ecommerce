@@ -45,14 +45,14 @@ input[type="file"] {
 .personalInf-content button{
     border: none;
     padding: 10px 15px;
-    background-color: black;
+    background-color: var(--background);
     border: 1px solid var(--border);
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
 }
 
 .personalInf-content button:hover{
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--hover);
 }
 .personalInf-verified{
     padding: 0px 10px;

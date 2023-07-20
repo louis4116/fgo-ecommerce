@@ -1,8 +1,8 @@
 .container{
     display: flex;
     justify-content: center;
-    max-width: var(--pagewidth);
-    
+    height: 100dvh;
+    background-color: var(--background);
 }
 .navbar{
     width: 17rem;

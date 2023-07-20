@@ -1,11 +1,10 @@
 .account{
- height: 100vh;
+ height: 100dvh;
+ background-color: var(--background);
  display: flex;
-
  position: relative;
  justify-content: center;
- align-items: center;
-
+ padding: 5em;
 }
 
 .card-front,
